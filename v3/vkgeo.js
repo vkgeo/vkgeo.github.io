@@ -434,7 +434,9 @@ let map = new ol.Map({
     "target": "map",
     "layers": [
         new ol.layer.Tile({
-            "source": new ol.source.OSM()
+            "source": new ol.source.OSM({
+                "crossOrigin": null
+            })
         }),
         new ol.layer.Vector({
             "source": marker_source
