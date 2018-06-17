@@ -144,8 +144,6 @@ function centerOnTrackedMarker() {
         map.getView().setCenter(tracked_marker.getGeometry().getCoordinates());
         map.getView().setRotation(MAP_CENTER_ROTATION);
         map.getView().setZoom(MAP_CENTER_ZOOM);
-
-        console.log("CENTER");
     }
 }
 
