@@ -369,6 +369,10 @@ function runPeriodicUpdate() {
                                         }
 
                                         for (let i = 0; i < markers_to_remove.length; i++) {
+                                            if (tracked_marker === markers_to_remove[i]) {
+                                                tracked_marker = null;
+                                            }
+
                                             marker_source.removeFeature(markers_to_remove[i]);
                                         }
                                     }
@@ -404,6 +408,10 @@ function runPeriodicUpdate() {
                     }
 
                     for (let i = 0; i < markers_to_remove.length; i++) {
+                        if (tracked_marker === markers_to_remove[i]) {
+                            tracked_marker = null;
+                        }
+
                         marker_source.removeFeature(markers_to_remove[i]);
                     }
                 }
