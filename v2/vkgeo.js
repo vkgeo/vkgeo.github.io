@@ -247,7 +247,7 @@ function runPeriodicUpdate() {
 
     function updateFriends(data, offset) {
         if (data.hasOwnProperty("response")) {
-            if (data.response && data.response.items && data.response.items.length < 0) {
+            if (data.response && data.response.items && data.response.items.length > 0) {
                 friends_list = friends_list.concat(data.response.items);
 
                 if (offset + data.response.items.length < data.response.count) {
