@@ -19,7 +19,7 @@ function createControlPanelImage(img_class, user_id, battery_status, battery_lev
     function drawIcon() {
         if ((image === null || (image.complete && image.naturalWidth > 0)) &&
             (label === null || (label.complete && label.naturalWidth > 0))) {
-            const angle   = Math.PI / 4;
+            const angle   = 3 * Math.PI / 8;
             let   radius  = Math.min(size[0], size[1]) / 2;
             let   context = canvas.getContext("2d");
 
