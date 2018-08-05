@@ -15,11 +15,13 @@ function requestSettings() {
     VK.callMethod("showSettingsBox", VK_ACCESS_SETTINGS);
 }
 
-function createControlPanelImage(img_class, user_id, src, size) {
+function createControlPanelImage(img_class, user_id, battery_status, battery_level, src, size) {
     function drawIcon() {
-        if (image.complete && image.naturalWidth > 0) {
-            let radius  = Math.min(size[0], size[1]) / 2;
-            let context = canvas.getContext("2d");
+        if ((image === null || (image.complete && image.naturalWidth > 0)) &&
+            (label === null || (label.complete && label.naturalWidth > 0))) {
+            const angle   = -Math.PI / 4;
+            let   radius  = Math.min(size[0], size[1]) / 2;
+            let   context = canvas.getContext("2d");
 
             context.save();
 
@@ -27,14 +29,22 @@ function createControlPanelImage(img_class, user_id, src, size) {
             context.arc(size[0] / 2, size[1] / 2, radius, 0, 2 * Math.PI, false);
             context.clip();
 
-            context.drawImage(image, 0, 0, size[0], size[1]);
+            if (image) {
+                context.drawImage(image, 0, 0, size[0], size[1]);
+            }
 
             context.restore();
+
+            if (label) {
+                context.drawImage(label, size[0] / 2 + radius * Math.sin(angle) - label.width  / 2,
+                                         size[1] / 2 + radius * Math.cos(angle) - label.height / 2);
+            }
         }
     }
 
     let canvas = document.createElement("canvas");
     let image  = null;
+    let label  = null;
 
     canvas.width           = size[0];
     canvas.height          = size[1];
@@ -71,6 +81,39 @@ function createControlPanelImage(img_class, user_id, src, size) {
         image.src = "images/camera_50.png";
     } else {
         image.src = src;
+    }
+
+    if (battery_status === "CHARGING" || battery_status === "DISCHARGING") {
+        label = document.createElement("img");
+
+        label.crossOrigin = "anonymous";
+        label.onload      = drawIcon;
+
+        if (battery_level < 25) {
+            if (battery_status === "CHARGING") {
+                label.src = "images/battery_25_charging.png";
+            } else {
+                label.src = "images/battery_25.png";
+            }
+        } else if (battery_level < 50) {
+            if (battery_status === "CHARGING") {
+                label.src = "images/battery_50_charging.png";
+            } else {
+                label.src = "images/battery_50.png";
+            }
+        } else if (battery_level < 75) {
+            if (battery_status === "CHARGING") {
+                label.src = "images/battery_75_charging.png";
+            } else {
+                label.src = "images/battery_75.png";
+            }
+        } else {
+            if (battery_status === "CHARGING") {
+                label.src = "images/battery_100_charging.png";
+            } else {
+                label.src = "images/battery_100.png";
+            }
+        }
     }
 
     return canvas;
@@ -199,7 +242,7 @@ function runPeriodicUpdate() {
             control_panel.removeChild(control_panel.lastChild);
         }
 
-        control_panel.appendChild(createControlPanelImage("SHOW_ALL", "", "images/button_show_all.png", [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]));
+        control_panel.appendChild(createControlPanelImage("SHOW_ALL", "", "", 0, "images/button_show_all.png", [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]));
 
         let markers = marker_source.getFeatures();
 
@@ -208,7 +251,7 @@ function runPeriodicUpdate() {
                 let user_id = markers[i].getId();
 
                 if (user_id === "") {
-                    let my_image = createControlPanelImage("SHOW_MARKER", "", my_photo_50, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]);
+                    let my_image = createControlPanelImage("SHOW_MARKER", "", "", 0, my_photo_50, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]);
 
                     if (control_panel.firstChild && control_panel.firstChild.nextSibling) {
                         control_panel.insertBefore(my_image, control_panel.firstChild.nextSibling);
@@ -216,7 +259,9 @@ function runPeriodicUpdate() {
                         control_panel.appendChild(my_image);
                     }
                 } else if (friends_map.hasOwnProperty(user_id)) {
-                    control_panel.appendChild(createControlPanelImage("SHOW_MARKER", user_id, friends_map[user_id].photo_50, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]));
+                    control_panel.appendChild(createControlPanelImage("SHOW_MARKER", user_id, friends_map[user_id].battery_status,
+                                                                                              friends_map[user_id].battery_level,
+                                                                                              friends_map[user_id].photo_50, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]));
 
                     friends_on_map++;
                 }
@@ -256,6 +301,9 @@ function runPeriodicUpdate() {
                         for (let j = 0; j < VK_MAX_BATCH_SIZE; j++) {
                             if (i + j < friends_list.length) {
                                 friends_map[friends_list[i + j].id.toString()] = friends_list[i + j];
+
+                                friends_map[friends_list[i + j].id.toString()].battery_status = "";
+                                friends_map[friends_list[i + j].id.toString()].battery_level  = 0;
 
                                 code = code + "result.push(API.notes.get({\"user_id\": " + friends_list[i + j].id + ", \"count\": " + VK_MAX_NOTES_GET_COUNT + ", \"sort\": 0}).items);";
                             }
@@ -336,6 +384,13 @@ function runPeriodicUpdate() {
                                                     frnd_marker.set("firstName",  friends_map[user_id].first_name);
                                                     frnd_marker.set("lastName",   friends_map[user_id].last_name);
                                                     frnd_marker.set("updateTime", user_data.update_time);
+
+                                                    if (user_data.hasOwnProperty("battery_status") && typeof user_data.battery_status === "string" &&
+                                                        user_data.hasOwnProperty("battery_level")  && typeof user_data.battery_level  === "number"
+                                                                                                   && !isNaN(user_data.battery_level) && isFinite(user_data.battery_level)) {
+                                                        friends_map[user_id].battery_status = user_data.battery_status;
+                                                        friends_map[user_id].battery_level  = user_data.battery_level;
+                                                    }
 
                                                     updated_friends[user_id] = true;
                                                 }
@@ -556,7 +611,7 @@ VK.init(function() {
                                     }
 
                                     let control_panel = document.getElementById("controlPanel");
-                                    let my_image      = createControlPanelImage("SHOW_MARKER", "", my_photo_50, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]);
+                                    let my_image      = createControlPanelImage("SHOW_MARKER", "", "", 0, my_photo_50, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]);
 
                                     if (control_panel.firstChild && control_panel.firstChild.nextSibling) {
                                         control_panel.insertBefore(my_image, control_panel.firstChild.nextSibling);
