@@ -257,7 +257,7 @@ function runPeriodicUpdate() {
                             if (i + j < friends_list.length) {
                                 friends_map[friends_list[i + j].id.toString()] = friends_list[i + j];
 
-                                code = code + "result.push(API.notes.get({\"user_id\": " + friends_list[i + j].id + ", \"count\": " + VK_MAX_NOTES_GET_COUNT + "}).items);";
+                                code = code + "result.push(API.notes.get({\"user_id\": " + friends_list[i + j].id + ", \"count\": " + VK_MAX_NOTES_GET_COUNT + ", \"sort\": 0}).items);";
                             }
                         }
 
@@ -309,7 +309,12 @@ function runPeriodicUpdate() {
                                                     console.log("updateFriends() : invalid user data");
                                                 }
 
-                                                if (user_data) {
+                                                if (user_data && user_data.hasOwnProperty("update_time") && typeof user_data.update_time === "number"
+                                                                                                         && !isNaN(user_data.update_time) && isFinite(user_data.update_time) &&
+                                                                 user_data.hasOwnProperty("latitude")    && typeof user_data.latitude === "number"
+                                                                                                         && !isNaN(user_data.latitude) && isFinite(user_data.latitude) &&
+                                                                 user_data.hasOwnProperty("longitude")   && typeof user_data.longitude === "number"
+                                                                                                         && !isNaN(user_data.longitude) && isFinite(user_data.longitude)) {
                                                     let frnd_marker = marker_source.getFeatureById(user_id);
 
                                                     if (frnd_marker === null) {
