@@ -1,7 +1,7 @@
 const UPDATE_INTERVAL          = 60000;
 const LOCATION_TIMEOUT         = 12 * 60 * 60;
 const MARKER_IMAGE_SIZE        = 48;
-const CONTROL_PANEL_IMAGE_SIZE = 48;
+const CONTROL_PANEL_IMAGE_SIZE = 56;
 const MAP_CENTER_ROTATION      = 0.0;
 const MAP_CENTER_ZOOM          = 16.0;
 const VK_ACCESS_SETTINGS       = 2048 | 2;
@@ -19,7 +19,7 @@ function createControlPanelImage(img_class, user_id, battery_status, battery_lev
     function drawIcon() {
         if ((image === null || (image.complete && image.naturalWidth > 0)) &&
             (label === null || (label.complete && label.naturalWidth > 0))) {
-            const angle   = 3 * Math.PI / 8;
+            const angle   = Math.PI / 4;
             let   radius  = Math.min(size[0], size[1]) / 2;
             let   context = canvas.getContext("2d");
 
