@@ -15,7 +15,7 @@ function requestSettings() {
     VK.callMethod("showSettingsBox", VK_ACCESS_SETTINGS);
 }
 
-function createControlPanelImage(img_class, user_id, update_time, battery_status, battery_level, src, size) {
+function createControlPanelImage(img_class, user_id, battery_status, battery_level, src, size) {
     function drawIcon() {
         if ((image === null || (image.complete && image.naturalWidth > 0)) &&
             (label === null || (label.complete && label.naturalWidth > 0))) {
@@ -246,7 +246,7 @@ function runPeriodicUpdate() {
             control_panel.removeChild(control_panel.lastChild);
         }
 
-        control_panel.appendChild(createControlPanelImage("SHOW_ALL", "", 0, "", 0, "images/button_show_all.png", [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]));
+        control_panel.appendChild(createControlPanelImage("SHOW_ALL", "", "", 0, "images/button_show_all.png", [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]));
 
         let markers = marker_source.getFeatures();
 
@@ -255,7 +255,7 @@ function runPeriodicUpdate() {
                 let user_id = markers[i].getId();
 
                 if (user_id === "") {
-                    let my_image = createControlPanelImage("SHOW_MARKER", "", 0, "", 0, my_photo_100, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]);
+                    let my_image = createControlPanelImage("SHOW_MARKER", "", "", 0, my_photo_100, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]);
 
                     if (control_panel.firstChild && control_panel.firstChild.nextSibling) {
                         control_panel.insertBefore(my_image, control_panel.firstChild.nextSibling);
@@ -263,8 +263,7 @@ function runPeriodicUpdate() {
                         control_panel.appendChild(my_image);
                     }
                 } else if (friends_map.hasOwnProperty(user_id)) {
-                    control_panel.appendChild(createControlPanelImage("SHOW_MARKER", user_id, friends_map[user_id].update_time,
-                                                                                              friends_map[user_id].battery_status,
+                    control_panel.appendChild(createControlPanelImage("SHOW_MARKER", user_id, friends_map[user_id].battery_status,
                                                                                               friends_map[user_id].battery_level,
                                                                                               friends_map[user_id].photo_100, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]));
 
@@ -625,7 +624,7 @@ VK.init(function() {
                                     }
 
                                     let control_panel = document.getElementById("controlPanel");
-                                    let my_image      = createControlPanelImage("SHOW_MARKER", "", 0, "", 0, my_photo_100, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]);
+                                    let my_image      = createControlPanelImage("SHOW_MARKER", "", "", 0, my_photo_100, [CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_IMAGE_SIZE]);
 
                                     if (control_panel.firstChild && control_panel.firstChild.nextSibling) {
                                         control_panel.insertBefore(my_image, control_panel.firstChild.nextSibling);
