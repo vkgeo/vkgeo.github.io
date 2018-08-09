@@ -85,43 +85,35 @@ function createControlPanelImage(img_class, user_id, update_time, battery_status
         image.src = src;
     }
 
-    if (user_id !== "") {
-        if ((new Date()).getTime() / 1000 > update_time + DATA_TIMEOUT) {
-            label = document.createElement("img");
+    if (battery_status === "CHARGING" || battery_status === "DISCHARGING") {
+        label = document.createElement("img");
 
-            label.crossOrigin = "anonymous";
-            label.onload      = drawIcon;
-            label.src         = "images/avatar_obsolete_data_label.png";
-        } else if (battery_status === "CHARGING" || battery_status === "DISCHARGING") {
-            label = document.createElement("img");
+        label.crossOrigin = "anonymous";
+        label.onload      = drawIcon;
 
-            label.crossOrigin = "anonymous";
-            label.onload      = drawIcon;
-
-            if (battery_level < 25) {
-                if (battery_status === "CHARGING") {
-                    label.src = "images/avatar_battery_25_charging_label.png";
-                } else {
-                    label.src = "images/avatar_battery_25_label.png";
-                }
-            } else if (battery_level < 50) {
-                if (battery_status === "CHARGING") {
-                    label.src = "images/avatar_battery_50_charging_label.png";
-                } else {
-                    label.src = "images/avatar_battery_50_label.png";
-                }
-            } else if (battery_level < 75) {
-                if (battery_status === "CHARGING") {
-                    label.src = "images/avatar_battery_75_charging_label.png";
-                } else {
-                    label.src = "images/avatar_battery_75_label.png";
-                }
+        if (battery_level < 25) {
+            if (battery_status === "CHARGING") {
+                label.src = "images/avatar_battery_25_charging_label.png";
             } else {
-                if (battery_status === "CHARGING") {
-                    label.src = "images/avatar_battery_100_charging_label.png";
-                } else {
-                    label.src = "images/avatar_battery_100_label.png";
-                }
+                label.src = "images/avatar_battery_25_label.png";
+            }
+        } else if (battery_level < 50) {
+            if (battery_status === "CHARGING") {
+                label.src = "images/avatar_battery_50_charging_label.png";
+            } else {
+                label.src = "images/avatar_battery_50_label.png";
+            }
+        } else if (battery_level < 75) {
+            if (battery_status === "CHARGING") {
+                label.src = "images/avatar_battery_75_charging_label.png";
+            } else {
+                label.src = "images/avatar_battery_75_label.png";
+            }
+        } else {
+            if (battery_status === "CHARGING") {
+                label.src = "images/avatar_battery_100_charging_label.png";
+            } else {
+                label.src = "images/avatar_battery_100_label.png";
             }
         }
     }
