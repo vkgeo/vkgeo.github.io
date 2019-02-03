@@ -392,7 +392,7 @@ function runPeriodicUpdate() {
                                             for (let i = 0; i < data.response.length; i++) {
                                                 if (data.response[i]) {
                                                     for (let j = 0; j < data.response[i].length; j++) {
-                                                        if (data.response[i][j].title === DATA_NOTE_TITLE) {
+                                                        if (data.response[i][j] && data.response[i][j].title === DATA_NOTE_TITLE) {
                                                             notes_list.push(data.response[i][j]);
                                                         }
                                                     }
