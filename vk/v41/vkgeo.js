@@ -327,7 +327,7 @@ function runPeriodicUpdate() {
                                 "code": code,
                                 "v":    VK_API_V
                             }, function(data) {
-                                console.log("DEBUG: " + data.toString());
+                                console.log("DEBUG: " + JSON.stringify(data));
                                 if (data.hasOwnProperty("response")) {
                                     if (data.response) {
                                         for (let i = 0; i < data.response.length; i++) {
