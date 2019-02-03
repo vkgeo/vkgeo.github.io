@@ -332,7 +332,7 @@ function runPeriodicUpdate() {
                                 }
                             }
                         } else {
-                            console.log("updateFriends() : invalid entry");
+                            console.log("updateFriends() : invalid friend entry");
                         }
                     }
 
@@ -448,7 +448,7 @@ function runPeriodicUpdate() {
                                                 }
                                             }
                                         } else {
-                                            console.log("updateFriends() : invalid entry");
+                                            console.log("updateFriends() : invalid note entry");
                                         }
                                     }
 
