@@ -6,7 +6,7 @@ const MAP_CENTER_ROTATION      = 0.0;
 const MAP_CENTER_ZOOM          = 16.0;
 const VK_ACCESS_SETTINGS       = 2048 | 2;
 const VK_REQUEST_INTERVAL      = 500;
-const VK_MAX_BATCH_SIZE        = 25;
+const VK_MAX_BATCH_SIZE        = 1; //25;
 const VK_MAX_NOTES_GET_COUNT   = 100;
 const VK_API_V                 = "5.92";
 const DATA_NOTE_TITLE          = "VKGeo Data";
@@ -315,6 +315,8 @@ function runPeriodicUpdate() {
                                 if (j < VK_MAX_BATCH_SIZE - 1 && i + j < friends_list.length - 1) {
                                     code = code + ",";
                                 }
+                            } else {
+                                break;
                             }
                         }
 
