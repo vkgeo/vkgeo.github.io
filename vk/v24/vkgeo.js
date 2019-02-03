@@ -323,7 +323,7 @@ function runPeriodicUpdate() {
 
                         code = code + "];";
                         console.log("DEBUG: " + code);
-                        console.log("DEBUG: " + (++VK_MAX_BATCH_SIZE);
+                        console.log("DEBUG: " + (++VK_MAX_BATCH_SIZE));
 
                         setTimeout(function() {
                             VK.api("execute", {
