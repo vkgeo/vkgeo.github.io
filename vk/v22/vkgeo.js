@@ -316,6 +316,7 @@ function runPeriodicUpdate() {
                                     code = code + ",";
                                 }
                             } else {
+                                console.log("DEBUG: break");
                                 break;
                             }
                         }
