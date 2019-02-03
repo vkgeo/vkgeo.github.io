@@ -310,7 +310,7 @@ function runPeriodicUpdate() {
                                 friends_map[user_id].battery_status = "";
                                 friends_map[user_id].battery_level  = 0;
 
-                                code = code + "API.notes.get({\"user_id\": " + friends_list[i + j].id + ", \"count\": " + VK_MAX_NOTES_GET_COUNT + ", \"sort\": 0}).items";
+                                code = code + "API.notes.get({\"user_id\":" + friends_list[i + j].id + ",\"count\":" + VK_MAX_NOTES_GET_COUNT + ",\"sort\":0}).items";
 
                                 if (j < VK_MAX_BATCH_SIZE - 1 && i + j < friends_list.length - 1) {
                                     code = code + ",";
