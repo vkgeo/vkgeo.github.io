@@ -303,6 +303,8 @@ function runPeriodicUpdate() {
                             if (!friends_list[i].deactivated) {
                                 let user_id = friends_list[i].id.toString();
 
+                                friends_map[user_id] = {};
+
                                 if (friends_list[i].hasOwnProperty("first_name") && typeof friends_list[i].first_name === "string") {
                                     friends_map[user_id].first_name = friends_list[i].first_name;
                                 } else {
