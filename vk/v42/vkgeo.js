@@ -291,28 +291,35 @@ function runPeriodicUpdate() {
                         });
                     }, VK_REQUEST_INTERVAL);
                 } else {
-                    let notes_req_count = 0;
-                    let friends_map     = {};
-                    let notes_list      = [];
+                    let notes_req_count        = 0;
+                    let friends_map            = {};
+                    let available_friends_list = [];
+                    let notes_list             = [];
 
-                    for (let i = 0; i < friends_list.length; i = i + VK_MAX_BATCH_SIZE) {
+                    for (let i = 0; i < friends_list.length; i++) {
+                        let user_id = friends_list[i].id.toString();
+
+                        friends_map[user_id] = friends_list[i];
+
+                        friends_map[user_id].update_time    = 0;
+                        friends_map[user_id].latitude       = 0;
+                        friends_map[user_id].longitude      = 0;
+                        friends_map[user_id].battery_status = "";
+                        friends_map[user_id].battery_level  = 0;
+
+                        if (![friends_list[i].hasOwnProperty("deactivated")] || !friends_list[i].deactivated) {
+                            available_friends_list.push(friends_list[i]);
+                        }
+                    }
+
+                    for (let i = 0; i < available_friends_list.length; i = i + VK_MAX_BATCH_SIZE) {
                         let code = "return [";
 
                         for (let j = 0; j < VK_MAX_BATCH_SIZE; j++) {
-                            if (i + j < friends_list.length) {
-                                let user_id = friends_list[i + j].id.toString();
+                            if (i + j < available_friends_list.length) {
+                                code = code + "API.notes.get({\"user_id\":" + available_friends_list[i + j].id + ",\"count\":" + VK_MAX_NOTES_GET_COUNT + ",\"sort\":0}).items";
 
-                                friends_map[user_id] = friends_list[i + j];
-
-                                friends_map[user_id].update_time    = 0;
-                                friends_map[user_id].latitude       = 0;
-                                friends_map[user_id].longitude      = 0;
-                                friends_map[user_id].battery_status = "";
-                                friends_map[user_id].battery_level  = 0;
-
-                                code = code + "API.notes.get({\"user_id\":" + friends_list[i + j].id + ",\"count\":" + VK_MAX_NOTES_GET_COUNT + ",\"sort\":0}).items";
-
-                                if (j < VK_MAX_BATCH_SIZE - 1 && i + j < friends_list.length - 1) {
+                                if (j < VK_MAX_BATCH_SIZE - 1 && i + j < available_friends_list.length - 1) {
                                     code = code + ",";
                                 }
                             } else {
@@ -327,7 +334,6 @@ function runPeriodicUpdate() {
                                 "code": code,
                                 "v":    VK_API_V
                             }, function(data) {
-                                console.log("DEBUG: " + JSON.stringify(data));
                                 if (data.hasOwnProperty("response")) {
                                     if (data.response) {
                                         for (let i = 0; i < data.response.length; i++) {
