@@ -319,7 +319,7 @@ function runPeriodicUpdate() {
                         }
 
                         code = code + "];";
-                        console.debug(code);
+                        console.log("DEBUG: " + code);
 
                         setTimeout(function() {
                             VK.api("execute", {
