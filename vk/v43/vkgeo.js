@@ -10,6 +10,7 @@ const VK_MAX_BATCH_SIZE        = 25;
 const VK_MAX_NOTES_GET_COUNT   = 100;
 const VK_API_V                 = "5.92";
 const DATA_NOTE_TITLE          = "VKGeo Data";
+const DEFAULT_PHOTO_100_URL    = "images/camera_100.png";
 
 function requestSettings() {
     VK.callMethod("showSettingsBox", VK_ACCESS_SETTINGS);
@@ -78,7 +79,7 @@ function createControlPanelImage(img_class, user_id, battery_status, battery_lev
     image.onload      = drawIcon;
 
     if (src.match(/camera_100\.png/)) {
-        image.src = "images/camera_100.png";
+        image.src = DEFAULT_PHOTO_100_URL;
     } else {
         image.src = src;
     }
@@ -163,7 +164,7 @@ function createMarkerImage(marker, update_time, src, size) {
             image.onload      = drawIcon;
 
             if (src.match(/camera_100\.png/)) {
-                image.src = "images/camera_100.png";
+                image.src = DEFAULT_PHOTO_100_URL;
             } else {
                 image.src = src;
             }
@@ -301,13 +302,27 @@ function runPeriodicUpdate() {
 
                         friends_map[user_id] = friends_list[i];
 
+                        if (!friends_map[user_id].hasOwnProperty("first_name")) {
+                            friends_map[user_id].first_name = "";
+                        }
+                        if (!friends_map[user_id].hasOwnProperty("last_name")) {
+                            friends_map[user_id].last_name = "";
+                        }
+                        if (!friends_map[user_id].hasOwnProperty("photo_100")) {
+                            friends_map[user_id].photo_100 = DEFAULT_PHOTO_100_URL;
+                        }
+
                         friends_map[user_id].update_time    = 0;
                         friends_map[user_id].latitude       = 0;
                         friends_map[user_id].longitude      = 0;
                         friends_map[user_id].battery_status = "";
                         friends_map[user_id].battery_level  = 0;
 
-                        if (![friends_list[i].hasOwnProperty("deactivated")] || !friends_list[i].deactivated) {
+                        let deactivated       = friends_list[i].hasOwnProperty("deactivated")       && friends_list[i].deactivated;
+                        let is_closed         = friends_list[i].hasOwnProperty("is_closed")         && friends_list[i].is_closed;
+                        let can_access_closed = friends_list[i].hasOwnProperty("can_access_closed") && friends_list[i].can_access_closed;
+
+                        if (!deactivated && (!is_closed || can_access_closed)) {
                             available_friends_list.push(friends_list[i]);
                         }
                     }
@@ -519,7 +534,7 @@ function runPeriodicUpdate() {
 }
 
 let map_was_touched = false;
-let my_photo_100    = "images/camera_100.png";
+let my_photo_100    = DEFAULT_PHOTO_100_URL;
 let my_marker       = null;
 let tracked_marker  = null;
 
@@ -610,7 +625,11 @@ VK.init(function() {
                         if (my_marker === null) {
                             if (data.hasOwnProperty("response")) {
                                 if (data.response && data.response.length === 1) {
-                                    my_photo_100 = data.response[0].photo_100;
+                                    if (data.response[0].hasOwnProperty("photo_100")) {
+                                        my_photo_100 = data.response[0].photo_100;
+                                    } else {
+                                        my_photo_100 = DEFAULT_PHOTO_100_URL;
+                                    }
 
                                     my_marker = new ol.Feature({
                                         "geometry": new ol.geom.Point(ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude]))
@@ -624,8 +643,17 @@ VK.init(function() {
 
                                     marker_source.addFeature(my_marker);
 
-                                    my_marker.set("firstName",  data.response[0].first_name);
-                                    my_marker.set("lastName",   data.response[0].last_name);
+                                    if (data.response[0].hasOwnProperty("first_name")) {
+                                        my_marker.set("firstName", data.response[0].first_name);
+                                    } else {
+                                        my_marker.set("firstName", "");
+                                    }
+                                    if (data.response[0].hasOwnProperty("last_name")) {
+                                        my_marker.set("lastName", data.response[0].last_name);
+                                    } else {
+                                        my_marker.set("lastName", "");
+                                    }
+
                                     my_marker.set("updateTime", (new Date()).getTime() / 1000);
 
                                     if (tracked_marker !== null) {
