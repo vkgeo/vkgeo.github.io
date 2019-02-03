@@ -450,7 +450,7 @@ function runPeriodicUpdate() {
                                     setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
                                 }
                             });
-                        }, VK_REQUEST_INTERVAL * i / VK_MAX_BATCH_SIZE);
+                        }, VK_REQUEST_INTERVAL * (i + VK_MAX_BATCH_SIZE) / VK_MAX_BATCH_SIZE);
 
                         notes_req_count++;
                     }
@@ -501,12 +501,14 @@ function runPeriodicUpdate() {
         }
     }
 
-    VK.api("friends.get", {
-        "fields": "photo_100",
-        "v":      VK_API_V
-    }, function(data) {
-        updateFriends(data, 0);
-    });
+    setTimeout(function() {
+        VK.api("friends.get", {
+            "fields": "photo_100",
+            "v":      VK_API_V
+        }, function(data) {
+            updateFriends(data, 0);
+        });
+    }, VK_REQUEST_INTERVAL);
 }
 
 let map_was_touched = false;
