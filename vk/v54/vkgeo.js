@@ -306,7 +306,6 @@ function runPeriodicUpdate() {
 
     function updateFriends(data, offset) {
         if (data.hasOwnProperty("response")) {
-            data.response.items = [];
             if (data.response && data.response.items) {
                 friends_list = friends_list.concat(data.response.items);
 
@@ -365,6 +364,7 @@ function runPeriodicUpdate() {
                         }
                     }
 
+                    accessible_frnd_ids = [];
                     if (accessible_frnd_ids.length > 0) {
                         for (let i = 0; i < accessible_frnd_ids.length; i = i + VK_MAX_BATCH_SIZE) {
                             let code = "return [";
