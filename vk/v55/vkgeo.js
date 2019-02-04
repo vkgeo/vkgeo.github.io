@@ -364,7 +364,6 @@ function runPeriodicUpdate() {
                         }
                     }
 
-                    accessible_frnd_ids = [];
                     if (accessible_frnd_ids.length > 0) {
                         for (let i = 0; i < accessible_frnd_ids.length; i = i + VK_MAX_BATCH_SIZE) {
                             let code = "return [";
@@ -383,6 +382,7 @@ function runPeriodicUpdate() {
 
                             code = code + "];";
 
+                            code = "return [];";
                             setTimeout(function() {
                                 VK.api("execute", {
                                     "code": code,
