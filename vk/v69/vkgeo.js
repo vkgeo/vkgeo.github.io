@@ -428,7 +428,7 @@ let VKGeo = (function() {
 
                                                             try {
                                                                 user_data = JSON.parse(atob(regexp_result[1]));
-                                                            } catch (err) {
+                                                            } catch (ex) {
                                                                 console.log("updateFriends() : invalid user data");
                                                             }
 
