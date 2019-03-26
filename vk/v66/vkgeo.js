@@ -13,7 +13,9 @@ let VKGeo = (function() {
     const DATA_NOTE_TITLE          = "VKGeo Data";
     const DEFAULT_PHOTO_100_URL    = "images/camera_100.png";
 
-    function requestSettings() {
+    let publicScope = {};
+
+    publicScope.requestSettings = function() {
         VK.callMethod("showSettingsBox", VK_ACCESS_SETTINGS);
     }
 
@@ -749,4 +751,6 @@ let VKGeo = (function() {
     }, function() {
         displayFatalError(_("VK initialization failed."));
     }, VK_API_V);
+
+    return publicScope;
 })();
