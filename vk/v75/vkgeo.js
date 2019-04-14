@@ -391,6 +391,7 @@ let VKGeo = (function() {
                                         "code": execute_code,
                                         "v":    VK_API_V
                                     }, function(data) {
+                                        console.log(data);
                                         if (data.hasOwnProperty("response")) {
                                             if (data.response) {
                                                 for (let i = 0; i < data.response.length; i++) {
@@ -398,6 +399,8 @@ let VKGeo = (function() {
                                                         for (let j = 0; j < data.response[i].length; j++) {
                                                             if (data.response[i][j] && data.response[i][j].title === DATA_NOTE_TITLE) {
                                                                 notes_list.push(data.response[i][j]);
+
+                                                                break;
                                                             }
                                                         }
                                                     }
