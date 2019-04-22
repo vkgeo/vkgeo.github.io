@@ -1,3 +1,5 @@
+import "ol/ol.css";
+
 let VKGeo = (function() {
     "use strict";
 
@@ -554,7 +556,7 @@ let VKGeo = (function() {
     let map = new ol.Map({
         "target": "map",
         "layers": [
-            new ol.layer.Tile({
+            new ol.layer.TileLayer({
                 "source": new ol.source.OSM({
                     "url": "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}@2x.png"
                 })
