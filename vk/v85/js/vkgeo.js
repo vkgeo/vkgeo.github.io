@@ -574,7 +574,14 @@ let VKGeo = (function() {
         "view": new ol.View({
             "center": ol.proj.fromLonLat([0.0, 0.0]),
             "zoom":   0
-        })
+        }),
+        "controls": ol.control.defaults({
+            "attribution": false
+        }).extend([
+            new ol.control.Attribution({
+                "collapsible": true
+            })
+        ])
     });
     map.on("singleclick", function(event) {
         map.forEachFeatureAtPixel(event.pixel, function(feature, layer) {
