@@ -576,12 +576,10 @@ let VKGeo = (function() {
             "zoom":   0
         }),
         "controls": ol.control.defaults({
-            "attribution": false
-        }).extend([
-            new ol.control.Attribution({
+            "attributionOptions": [
                 "collapsible": true
-            })
-        ])
+            ]
+        })
     });
     map.on("singleclick", function(event) {
         map.forEachFeatureAtPixel(event.pixel, function(feature, layer) {
