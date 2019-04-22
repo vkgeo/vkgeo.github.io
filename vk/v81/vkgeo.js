@@ -1,5 +1,3 @@
-import 'ol/ol.css';
-
 let VKGeo = (function() {
     "use strict";
 
