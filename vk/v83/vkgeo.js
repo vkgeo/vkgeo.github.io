@@ -124,7 +124,7 @@ let VKGeo = (function() {
     }
 
     function createMarkerImage(marker, update_time, src, size) {
-        return new ol.style.Icon({
+        return new Icon({
             "img": (function() {
                 function drawIcon() {
                     if ((image === null || (image.complete && image.naturalWidth > 0)) &&
@@ -201,7 +201,7 @@ let VKGeo = (function() {
             let extent = markers[0].getGeometry().getExtent();
 
             for (let i = 1; i < markers.length; i++) {
-                ol.extent.extend(extent, markers[i].getGeometry().getExtent());
+                extend(extent, markers[i].getGeometry().getExtent());
             }
 
             let ad_panel_height     = 0;
@@ -446,18 +446,18 @@ let VKGeo = (function() {
                                                                 let frnd_marker = marker_source.getFeatureById(user_id);
 
                                                                 if (frnd_marker === null) {
-                                                                    frnd_marker = new ol.Feature({
-                                                                        "geometry": new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude]))
+                                                                    frnd_marker = new Feature({
+                                                                        "geometry": new Point(fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude]))
                                                                     });
 
                                                                     frnd_marker.setId(user_id);
 
                                                                     marker_source.addFeature(frnd_marker);
                                                                 } else {
-                                                                    frnd_marker.setGeometry(new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude])));
+                                                                    frnd_marker.setGeometry(new Point(fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude])));
                                                                 }
 
-                                                                frnd_marker.setStyle(new ol.style.Style({
+                                                                frnd_marker.setStyle(new Style({
                                                                     "image": createMarkerImage(frnd_marker, friends_map[user_id].update_time, friends_map[user_id].photo_100, [MARKER_IMAGE_SIZE, MARKER_IMAGE_SIZE])
                                                                 }));
 
@@ -547,32 +547,32 @@ let VKGeo = (function() {
     let my_marker       = null;
     let tracked_marker  = null;
 
-    let marker_source = new ol.source.Vector({
+    let marker_source = new Vector({
         "features": []
     });
 
-    let map = new ol.Map({
+    let map = new Map({
         "target": "map",
         "layers": [
-            new ol.layer.Tile({
-                "source": new ol.source.OSM({
+            new TileLayer({
+                "source": new OSM({
                     "url": "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}@2x.png"
                 })
             }),
-            new ol.layer.Vector({
+            new Vector({
                 "source": marker_source
             })
         ],
         "overlays": [
-            new ol.Overlay({
+            new Overlay({
                 "id":          "markerTooltip",
                 "element":     document.getElementById("markerTooltip"),
                 "offset":      [8, 0],
                 "positioning": "bottom-left"
             })
         ],
-        "view": new ol.View({
-            "center": ol.proj.fromLonLat([0.0, 0.0]),
+        "view": new View({
+            "center": fromLonLat([0.0, 0.0]),
             "zoom":   0
         })
     });
@@ -644,13 +644,13 @@ let VKGeo = (function() {
                                                 my_photo_100 = DEFAULT_PHOTO_100_URL;
                                             }
 
-                                            my_marker = new ol.Feature({
-                                                "geometry": new ol.geom.Point(ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude]))
+                                            my_marker = new Feature({
+                                                "geometry": new Point(fromLonLat([position.coords.longitude, position.coords.latitude]))
                                             });
 
                                             my_marker.setId("");
 
-                                            my_marker.setStyle(new ol.style.Style({
+                                            my_marker.setStyle(new Style({
                                                 "image": createMarkerImage(my_marker, (new Date()).getTime() / 1000, my_photo_100, [MARKER_IMAGE_SIZE, MARKER_IMAGE_SIZE])
                                             }));
 
@@ -694,7 +694,7 @@ let VKGeo = (function() {
                                 }
                             });
                         } else {
-                            my_marker.setGeometry(new ol.geom.Point(ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude])));
+                            my_marker.setGeometry(new Point(fromLonLat([position.coords.longitude, position.coords.latitude])));
 
                             my_marker.set("updateTime", (new Date()).getTime() / 1000);
 
