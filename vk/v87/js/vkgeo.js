@@ -576,9 +576,9 @@ let VKGeo = (function() {
             "zoom":   0
         }),
         "controls": ol.control.defaults({
-            "attributionOptions": [
+            "attributionOptions": {
                 "collapsible": true
-            ]
+            }
         })
     });
     map.on("singleclick", function(event) {
