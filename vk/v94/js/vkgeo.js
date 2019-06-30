@@ -306,14 +306,17 @@ let VKGeo = (function() {
         function updateFriends(data, offset) {
             if (data.hasOwnProperty("response")) {
                 if (data.response && data.response.items) {
+                    console.log(data.response);
                     friends_list = friends_list.concat(data.response.items);
 
                     if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
                         let next_offset = offset + data.response.items.length;
+                        console.log(next_offset);
 
                         setTimeout(function() {
                             VK.api("friends.get", {
                                 "fields": "photo_100",
+                                "count":  1,
                                 "offset": next_offset,
                                 "v":      VK_API_V
                             }, function(data) {
@@ -537,6 +540,7 @@ let VKGeo = (function() {
         setTimeout(function() {
             VK.api("friends.get", {
                 "fields": "photo_100",
+                "count":  1,
                 "v":      VK_API_V
             }, function(data) {
                 updateFriends(data, 0);
