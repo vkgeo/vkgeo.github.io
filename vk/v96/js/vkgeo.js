@@ -380,6 +380,8 @@ let VKGeo = (function() {
 
                                 execute_code = execute_code + "];";
 
+                                console.log(execute_code);
+
                                 setTimeout(function() {
                                     VK.api("execute", {
                                         "code": execute_code,
