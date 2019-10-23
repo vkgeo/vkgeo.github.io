@@ -7,7 +7,7 @@ let VKGeo = (function() {
     const MARKER_LABEL_SIZE        = {"width": 12, "height": 12};
     const CONTROL_PANEL_IMAGE_SIZE = {"width": 64, "height": 64};
     const CONTROL_PANEL_LABEL_SIZE = {"width": 12, "height": 18};
-    const MAP_PADDING              = 0;
+    const MAP_PADDING              = 48;
     const MAP_CENTER_ROTATION      = 0.0;
     const MAP_CENTER_ZOOM          = 16.0;
     const VK_ACCESS_SETTINGS       = 2048 | 2;
@@ -239,8 +239,6 @@ let VKGeo = (function() {
             for (let i = 1; i < markers.length; i++) {
                 ol.extent.extend(extent, markers[i].getGeometry().getExtent());
             }
-
-            console.log("DEBUG: " + getElementSize(document.getElementById("adPanel")).height);
 
             map.getView().fit(extent, {
                 "padding": [MAP_PADDING,
@@ -637,9 +635,9 @@ let VKGeo = (function() {
     try {
         VK.init(function() {
             function init() {
-                document.getElementById("adPanel").style.display      = "none";
+                document.getElementById("adPanel").style.display      = "flex";
                 document.getElementById("controlPanel").style.display = "flex";
-/*
+
                 VK.Widgets.Ads("adPanel", {}, {
                     "ad_unit_id":     105075,
                     "ad_unit_hash":   "498223b8d2f6d0f460567d0b69f52cfc",
@@ -649,7 +647,7 @@ let VKGeo = (function() {
                     "ad_type":        "horizontal",
                     "ads_count":      1
                 });
-*/
+
                 runVKRequestQueue();
                 runPeriodicUpdate();
 
