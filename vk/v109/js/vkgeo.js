@@ -269,7 +269,7 @@ let VKGeo = (function() {
                 control_panel.removeChild(control_panel.lastChild);
             }
 
-            control_panel.appendChild(createControlPanelImage("SHOW_ALL", "", "", 0, "images/button_show_all.png", CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_LABEL_WIDTH));
+            control_panel.appendChild(createControlPanelImage("SHOW_ALL", "", "", 0, "images/button_show_all.png", CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_LABEL_SIZE));
 
             let markers = marker_source.getFeatures();
 
@@ -278,7 +278,7 @@ let VKGeo = (function() {
                     let user_id = markers[i].getId();
 
                     if (user_id === "") {
-                        let my_image = createControlPanelImage("SHOW_MARKER", "", "", 0, my_photo_100, CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_LABEL_WIDTH);
+                        let my_image = createControlPanelImage("SHOW_MARKER", "", "", 0, my_photo_100, CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_LABEL_SIZE);
 
                         if (control_panel.firstChild && control_panel.firstChild.nextSibling) {
                             control_panel.insertBefore(my_image, control_panel.firstChild.nextSibling);
@@ -289,7 +289,7 @@ let VKGeo = (function() {
                         control_panel.appendChild(createControlPanelImage("SHOW_MARKER", user_id, friends_map[user_id].battery_status,
                                                                                                   friends_map[user_id].battery_level,
                                                                                                   friends_map[user_id].photo_100, CONTROL_PANEL_IMAGE_SIZE,
-                                                                                                                                  CONTROL_PANEL_LABEL_WIDTH));
+                                                                                                                                  CONTROL_PANEL_LABEL_SIZE));
 
                         friends_on_map++;
                     }
@@ -696,7 +696,7 @@ let VKGeo = (function() {
                                             }
 
                                             let control_panel = document.getElementById("controlPanel");
-                                            let my_image      = createControlPanelImage("SHOW_MARKER", "", "", 0, my_photo_100, CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_LABEL_WIDTH);
+                                            let my_image      = createControlPanelImage("SHOW_MARKER", "", "", 0, my_photo_100, CONTROL_PANEL_IMAGE_SIZE, CONTROL_PANEL_LABEL_SIZE);
 
                                             if (control_panel.firstChild && control_panel.firstChild.nextSibling) {
                                                 control_panel.insertBefore(my_image, control_panel.firstChild.nextSibling);
