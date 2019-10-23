@@ -221,11 +221,13 @@ let VKGeo = (function() {
         function getElementSize(elem) {
             let result = {"width": 0, "height": 0};
 
-            if (elem.offsetWidth) {
-                result.width = elem.offsetWidth;
+            let rect = elem.getBoundingClientRect();
+
+            if (rect.width) {
+                result.width = rect.width;
             }
-            if (elem.offsetHeight) {
-                result.height = elem.offsetHeight;
+            if (rect.height) {
+                result.height = rect.height;
             }
 
             return result;
