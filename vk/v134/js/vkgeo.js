@@ -50,10 +50,6 @@ let VKGeo = (function() {
 
                 context.save();
 
-                context.imageSmoothingEnabled = false;
-
-                context.save();
-
                 context.beginPath();
                 context.arc(size.width / 2, size.height / 2, radius, 0, 2 * Math.PI, false);
                 context.clip();
@@ -65,12 +61,16 @@ let VKGeo = (function() {
                 context.restore();
 
                 if (label) {
+                    context.save();
+
+                    context.imageSmoothingEnabled = false;
+
                     context.drawImage(label, size.width  / 2 + radius * Math.sin(angle) - label_size.width  / 2,
                                              size.height / 2 + radius * Math.cos(angle) - label_size.height / 2, label_size.width,
                                                                                                                  label_size.height);
-                }
 
-                context.restore();
+                    context.restore();
+                }
             }
         }
 
