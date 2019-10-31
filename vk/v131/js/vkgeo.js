@@ -48,6 +48,8 @@ let VKGeo = (function() {
                 let   radius  = Math.min(size.width, size.height) / 2;
                 let   context = canvas.getContext("2d");
 
+                context.save();
+
                 context.scale(device_ratio, device_ratio);
 
                 context.save();
@@ -67,6 +69,8 @@ let VKGeo = (function() {
                                              size.height / 2 + radius * Math.cos(angle) - label_size.height / 2, label_size.width,
                                                                                                                  label_size.height);
                 }
+
+                context.restore();
             }
         }
 
