@@ -50,10 +50,6 @@ let VKGeo = (function() {
 
                 context.save();
 
-                context.scale(device_ratio, device_ratio);
-
-                context.save();
-
                 context.beginPath();
                 context.arc(size.width / 2, size.height / 2, radius, 0, 2 * Math.PI, false);
                 context.clip();
@@ -69,24 +65,16 @@ let VKGeo = (function() {
                                              size.height / 2 + radius * Math.cos(angle) - label_size.height / 2, label_size.width,
                                                                                                                  label_size.height);
                 }
-
-                context.restore();
             }
         }
-
-        let device_ratio = 4;//window.devicePixelRatio ? window.devicePixelRatio : 1.0;
-
-        console.log("device_ratio: " + window.devicePixelRatio);
 
         let canvas = document.createElement("canvas");
         let image  = null;
         let label  = null;
 
-        canvas.width           = size.width  * device_ratio;
-        canvas.height          = size.height * device_ratio;
+        canvas.width           = size.width;
+        canvas.height          = size.height;
         canvas.className       = "controlPanelImage";
-        canvas.style.width     = size.width  + "px";
-        canvas.style.height    = size.height + "px";
         canvas.style.minWidth  = size.width  + "px";
         canvas.style.minHeight = size.height + "px";
 
