@@ -48,7 +48,7 @@ let VKGeo = (function() {
                 let   radius  = Math.min(size.width, size.height) / 2;
                 let   context = canvas.getContext("2d");
 
-                context.scale(device_ratio, device_ratio);
+                //context.scale(device_ratio, device_ratio);
 
                 context.save();
 
@@ -71,6 +71,8 @@ let VKGeo = (function() {
         }
 
         let device_ratio = window.devicePixelRatio ? window.devicePixelRatio : 1.0;
+
+        console.log("device_ratio: " + device_ratio);
 
         let canvas = document.createElement("canvas");
         let image  = null;
