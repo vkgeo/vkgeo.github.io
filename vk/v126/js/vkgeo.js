@@ -48,6 +48,8 @@ let VKGeo = (function() {
                 let   radius  = Math.min(size.width, size.height) / 2;
                 let   context = canvas.getContext("2d");
 
+                context.scale(device_ratio, device_ratio);
+
                 context.save();
 
                 context.beginPath();
@@ -68,12 +70,14 @@ let VKGeo = (function() {
             }
         }
 
+        let device_ratio = window.devicePixelRatio ? window.devicePixelRatio : 1.0;
+
         let canvas = document.createElement("canvas");
         let image  = null;
         let label  = null;
 
-        canvas.width           = size.width;
-        canvas.height          = size.height;
+        canvas.width           = size.width  * device_ratio;
+        canvas.height          = size.height * device_ratio;
         canvas.className       = "controlPanelImage";
         canvas.style.minWidth  = size.width  + "px";
         canvas.style.minHeight = size.height + "px";
