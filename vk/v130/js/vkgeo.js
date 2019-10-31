@@ -81,6 +81,8 @@ let VKGeo = (function() {
         canvas.width           = size.width  * device_ratio;
         canvas.height          = size.height * device_ratio;
         canvas.className       = "controlPanelImage";
+        canvas.style.width     = size.width  + "px";
+        canvas.style.height    = size.height + "px";
         canvas.style.minWidth  = size.width  + "px";
         canvas.style.minHeight = size.height + "px";
 
