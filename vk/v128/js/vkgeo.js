@@ -72,7 +72,7 @@ let VKGeo = (function() {
 
         let device_ratio = window.devicePixelRatio ? window.devicePixelRatio : 1.0;
 
-        console.log("device_ratio: " + device_ratio);
+        console.log("device_ratio: " + window.devicePixelRatio);
 
         let canvas = document.createElement("canvas");
         let image  = null;
