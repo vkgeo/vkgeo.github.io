@@ -3,7 +3,7 @@ let VKGeo = (function() {
 
     const UPDATE_INTERVAL          = 60000;
     const DATA_TIMEOUT             = 24 * 60 * 60;
-    const MIN_DEVICE_PIXEL_RATIO   = 2.0;
+    const MIN_DEVICE_PIXEL_RATIO   = 4.0;
     const MARKER_IMAGE_SIZE        = {"width": 48, "height": 48};
     const MARKER_LABEL_SIZE        = {"width": 12, "height": 12};
     const CONTROL_PANEL_IMAGE_SIZE = {"width": 64, "height": 64};
