@@ -202,8 +202,8 @@ let VKGeo = (function() {
 
                 canvas.width        = size.width  * pixel_ratio;
                 canvas.height       = size.height * pixel_ratio;
-                //canvas.style.width  = size.width  + "px";
-                //canvas.style.height = size.height + "px";
+                canvas.style.width  = size.width  + "px";
+                canvas.style.height = size.height + "px";
 
                 image = document.createElement("img");
 
@@ -226,6 +226,7 @@ let VKGeo = (function() {
 
                 return canvas;
             })(),
+            "size":    [size.width, size.height],
             "imgSize": [size.width, size.height]
         });
     }
