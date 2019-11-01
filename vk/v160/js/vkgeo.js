@@ -168,6 +168,10 @@ let VKGeo = (function() {
 
                         context.save();
 
+                        context.scale(pixel_ratio, pixel_ratio);
+
+                        context.save();
+
                         context.beginPath();
                         context.arc(size.width / 2, size.height / 2, radius, 0, 2 * Math.PI, false);
                         context.clip();
@@ -184,16 +188,20 @@ let VKGeo = (function() {
                                                                                                                          label_size.height);
                         }
 
+                        context.restore();
+
                         marker.changed();
                     }
                 }
+
+                let pixel_ratio = window.devicePixelRatio > MIN_DEVICE_PIXEL_RATIO ? window.devicePixelRatio : MIN_DEVICE_PIXEL_RATIO;
 
                 let canvas = document.createElement("canvas");
                 let image  = null;
                 let label  = null;
 
-                canvas.width  = size.width;
-                canvas.height = size.height;
+                canvas.width  = size.width  * pixel_ratio;
+                canvas.height = size.height * pixel_ratio;
 
                 image = document.createElement("img");
 
@@ -216,7 +224,8 @@ let VKGeo = (function() {
 
                 return canvas;
             })(),
-            "imgSize": [size.width, size.height]
+            "imgSize": [canvas.width, canvas.height],
+            "scale":   1.0 / pixel_ratio
         });
     }
 
