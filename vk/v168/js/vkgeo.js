@@ -3,7 +3,6 @@ let VKGeo = (function() {
 
     const UPDATE_INTERVAL          = 60000;
     const DATA_TIMEOUT             = 24 * 60 * 60;
-    const MIN_DEVICE_PIXEL_RATIO   = 2.0;
     const IMAGE_SIZE               = {"width": 100, "height": 100};
     const MARKER_IMAGE_SIZE        = {"width": 48,  "height": 48};
     const CONTROL_PANEL_IMAGE_SIZE = {"width": 64,  "height": 64};
@@ -217,8 +216,9 @@ let VKGeo = (function() {
 
                 return canvas;
             })(),
-            "imgSize": [IMAGE_SIZE.width  * device_pixel_ratio, IMAGE_SIZE.height * device_pixel_ratio],
-            "scale":   1.0 / device_pixel_ratio
+            "imgSize": [IMAGE_SIZE.width * device_pixel_ratio, IMAGE_SIZE.height * device_pixel_ratio],
+            "scale":   Math.min(MARKER_IMAGE_SIZE.width  / IMAGE_SIZE.width,
+                                MARKER_IMAGE_SIZE.height / IMAGE_SIZE.height) / device_pixel_ratio
         });
     }
 
@@ -565,7 +565,7 @@ let VKGeo = (function() {
         });
     }
 
-    let device_pixel_ratio = window.devicePixelRatio > MIN_DEVICE_PIXEL_RATIO ? window.devicePixelRatio : MIN_DEVICE_PIXEL_RATIO;
+    let device_pixel_ratio = window.devicePixelRatio > 1.0 ? window.devicePixelRatio : 1.0;
     let map_was_touched    = false;
     let my_photo_100       = DEFAULT_PHOTO_100_URL;
     let my_marker          = null;
