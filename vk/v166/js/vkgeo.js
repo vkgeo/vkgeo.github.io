@@ -6,7 +6,6 @@ let VKGeo = (function() {
     const MIN_DEVICE_PIXEL_RATIO   = 2.0;
     const IMAGE_SIZE               = {"width": 100, "height": 100};
     const MARKER_IMAGE_SIZE        = {"width": 48,  "height": 48};
-    const MARKER_LABEL_SIZE        = {"width": 12,  "height": 12};
     const CONTROL_PANEL_IMAGE_SIZE = {"width": 64,  "height": 64};
     const MAP_PADDING              = 48;
     const MAP_CENTER_ROTATION      = 0.0;
@@ -154,14 +153,20 @@ let VKGeo = (function() {
         return canvas;
     }
 
-    function createMarkerImage(marker, update_time, src, size, label_size) {
-        return new ol.style.Icon({
+    function createMarkerImage(marker, update_time, src) {
+        let style = new ol.style.Icon({
             "img": (function() {
                 function drawIcon() {
-                    if ((image === null || (image.complete && image.naturalWidth > 0)) &&
-                        (label === null || (label.complete && label.naturalWidth > 0))) {
+                    if ((image          &&  image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) &&
+                        (label === null || (label.complete && label.naturalWidth > 0 && label.naturalHeight > 0))) {
+                        canvas.width  = image.naturalWidth  * device_pixel_ratio;
+                        canvas.height = image.naturalHeight * device_pixel_ratio;
+
+                        style.imgSize = [canvas.width, canvas.height];
+                        style.scale   = Math.min(MARKER_IMAGE_SIZE.width / canvas.width, MARKER_IMAGE_SIZE.height / canvas.height);
+
                         const angle   = Math.PI / 4;
-                        let   radius  = Math.min(size.width, size.height) / 2;
+                        let   radius  = Math.min(image.naturalWidth, image.naturalHeight) / 2;
                         let   context = canvas.getContext("2d");
 
                         context.save();
@@ -171,19 +176,18 @@ let VKGeo = (function() {
                         context.save();
 
                         context.beginPath();
-                        context.arc(size.width / 2, size.height / 2, radius, 0, 2 * Math.PI, false);
+                        context.arc(image.naturalWidth / 2, image.naturalHeight / 2, radius, 0, 2 * Math.PI, false);
                         context.clip();
 
                         if (image) {
-                            context.drawImage(image, 0, 0, size.width, size.height);
+                            context.drawImage(image, 0, 0);
                         }
 
                         context.restore();
 
                         if (label) {
-                            context.drawImage(label, size.width  / 2 + radius * Math.sin(angle) - label_size.width  / 2,
-                                                     size.height / 2 + radius * Math.cos(angle) - label_size.height / 2, label_size.width,
-                                                                                                                         label_size.height);
+                            context.drawImage(label, image.naturalWidth  / 2 + radius * Math.sin(angle) - label.naturalWidth  / 2,
+                                                     image.naturalHeight / 2 + radius * Math.cos(angle) - label.naturalHeight / 2);
                         }
 
                         context.restore();
@@ -195,9 +199,6 @@ let VKGeo = (function() {
                 let canvas = document.createElement("canvas");
                 let image  = null;
                 let label  = null;
-
-                canvas.width  = size.width  * device_pixel_ratio;
-                canvas.height = size.height * device_pixel_ratio;
 
                 image = document.createElement("img");
 
@@ -220,9 +221,10 @@ let VKGeo = (function() {
 
                 return canvas;
             })(),
-            "imgSize": [size.width * device_pixel_ratio, size.height * device_pixel_ratio],
-            "scale":   1.0 / device_pixel_ratio
+            "imgSize": [0, 0]
         });
+
+        return style;
     }
 
     function centerOnTrackedMarker() {
@@ -488,7 +490,7 @@ let VKGeo = (function() {
                                                             }
 
                                                             frnd_marker.setStyle(new ol.style.Style({
-                                                                "image": createMarkerImage(frnd_marker, friends_map[user_id].update_time, friends_map[user_id].photo_100, MARKER_IMAGE_SIZE, MARKER_LABEL_SIZE)
+                                                                "image": createMarkerImage(frnd_marker, friends_map[user_id].update_time, friends_map[user_id].photo_100)
                                                             }));
 
                                                             frnd_marker.set("firstName",  friends_map[user_id].first_name);
@@ -696,7 +698,7 @@ let VKGeo = (function() {
                                             my_marker.setId("");
 
                                             my_marker.setStyle(new ol.style.Style({
-                                                "image": createMarkerImage(my_marker, (new Date()).getTime() / 1000, my_photo_100, MARKER_IMAGE_SIZE, MARKER_LABEL_SIZE)
+                                                "image": createMarkerImage(my_marker, (new Date()).getTime() / 1000, my_photo_100)
                                             }));
 
                                             marker_source.addFeature(my_marker);
