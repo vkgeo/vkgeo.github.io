@@ -44,11 +44,8 @@ let VKGeo = (function() {
         function drawIcon() {
             if ((image          &&  image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) &&
                 (label === null || (label.complete && label.naturalWidth > 0 && label.naturalHeight > 0))) {
-                canvas.width  = image.naturalWidth  * device_pixel_ratio;
-                canvas.height = image.naturalHeight * device_pixel_ratio;
-
                 const angle   = Math.PI / 4;
-                let   radius  = Math.min(image.naturalWidth, image.naturalHeight) / 2;
+                let   radius  = Math.min(IMAGE_SIZE.width, IMAGE_SIZE.height) / 2;
                 let   context = canvas.getContext("2d");
 
                 context.save();
@@ -58,18 +55,18 @@ let VKGeo = (function() {
                 context.save();
 
                 context.beginPath();
-                context.arc(image.naturalWidth / 2, image.naturalHeight / 2, radius, 0, 2 * Math.PI, false);
+                context.arc(IMAGE_SIZE.width / 2, IMAGE_SIZE.height / 2, radius, 0, 2 * Math.PI, false);
                 context.clip();
 
                 if (image) {
-                    context.drawImage(image, 0, 0);
+                    context.drawImage(image, 0, 0, IMAGE_SIZE.width, IMAGE_SIZE.height);
                 }
 
                 context.restore();
 
                 if (label) {
-                    context.drawImage(label, image.naturalWidth  / 2 + radius * Math.sin(angle) - label.naturalWidth  / 2,
-                                             image.naturalHeight / 2 + radius * Math.cos(angle) - label.naturalHeight / 2);
+                    context.drawImage(label, IMAGE_SIZE.width  / 2 + radius * Math.sin(angle) - label.naturalWidth  / 2,
+                                             IMAGE_SIZE.height / 2 + radius * Math.cos(angle) - label.naturalHeight / 2);
                 }
 
                 context.restore();
@@ -80,6 +77,8 @@ let VKGeo = (function() {
         let image  = null;
         let label  = null;
 
+        canvas.width           = IMAGE_SIZE.width  * device_pixel_ratio;
+        canvas.height          = IMAGE_SIZE.height * device_pixel_ratio;
         canvas.className       = "controlPanelImage";
         canvas.style.width     = CONTROL_PANEL_IMAGE_SIZE.width  + "px";
         canvas.style.height    = CONTROL_PANEL_IMAGE_SIZE.height + "px";
@@ -154,19 +153,13 @@ let VKGeo = (function() {
     }
 
     function createMarkerImage(marker, update_time, src) {
-        let style = new ol.style.Icon({
+        return new ol.style.Icon({
             "img": (function() {
                 function drawIcon() {
                     if ((image          &&  image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) &&
                         (label === null || (label.complete && label.naturalWidth > 0 && label.naturalHeight > 0))) {
-                        canvas.width  = image.naturalWidth  * device_pixel_ratio;
-                        canvas.height = image.naturalHeight * device_pixel_ratio;
-
-                        style.imgSize = [canvas.width, canvas.height];
-                        style.scale   = Math.min(MARKER_IMAGE_SIZE.width / canvas.width, MARKER_IMAGE_SIZE.height / canvas.height);
-
                         const angle   = Math.PI / 4;
-                        let   radius  = Math.min(image.naturalWidth, image.naturalHeight) / 2;
+                        let   radius  = Math.min(IMAGE_SIZE.width, IMAGE_SIZE.height) / 2;
                         let   context = canvas.getContext("2d");
 
                         context.save();
@@ -176,18 +169,18 @@ let VKGeo = (function() {
                         context.save();
 
                         context.beginPath();
-                        context.arc(image.naturalWidth / 2, image.naturalHeight / 2, radius, 0, 2 * Math.PI, false);
+                        context.arc(IMAGE_SIZE.width / 2, IMAGE_SIZE.height / 2, radius, 0, 2 * Math.PI, false);
                         context.clip();
 
                         if (image) {
-                            context.drawImage(image, 0, 0);
+                            context.drawImage(image, 0, 0, IMAGE_SIZE.width, IMAGE_SIZE.height);
                         }
 
                         context.restore();
 
                         if (label) {
-                            context.drawImage(label, image.naturalWidth  / 2 + radius * Math.sin(angle) - label.naturalWidth  / 2,
-                                                     image.naturalHeight / 2 + radius * Math.cos(angle) - label.naturalHeight / 2);
+                            context.drawImage(label, IMAGE_SIZE.width  / 2 + radius * Math.sin(angle) - label.naturalWidth  / 2,
+                                                     IMAGE_SIZE.height / 2 + radius * Math.cos(angle) - label.naturalHeight / 2);
                         }
 
                         context.restore();
@@ -199,6 +192,9 @@ let VKGeo = (function() {
                 let canvas = document.createElement("canvas");
                 let image  = null;
                 let label  = null;
+
+                canvas.width  = IMAGE_SIZE.width  * device_pixel_ratio;
+                canvas.height = IMAGE_SIZE.height * device_pixel_ratio;
 
                 image = document.createElement("img");
 
@@ -221,10 +217,9 @@ let VKGeo = (function() {
 
                 return canvas;
             })(),
-            "imgSize": [0, 0]
+            "imgSize": [IMAGE_SIZE.width  * device_pixel_ratio, IMAGE_SIZE.height * device_pixel_ratio],
+            "scale":   1.0 / device_pixel_ratio
         });
-
-        return style;
     }
 
     function centerOnTrackedMarker() {
