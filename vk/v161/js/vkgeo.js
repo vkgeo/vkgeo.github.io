@@ -224,7 +224,7 @@ let VKGeo = (function() {
 
                 return canvas;
             })(),
-            "imgSize": [canvas.width, canvas.height],
+            "imgSize": [size.width * pixel_ratio, size.height * pixel_ratio],
             "scale":   1.0 / pixel_ratio
         });
     }
