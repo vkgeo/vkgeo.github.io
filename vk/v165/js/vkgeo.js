@@ -6,6 +6,7 @@ let VKGeo = (function() {
     const MIN_DEVICE_PIXEL_RATIO   = 2.0;
     const IMAGE_SIZE               = {"width": 100, "height": 100};
     const MARKER_IMAGE_SIZE        = {"width": 48,  "height": 48};
+    const MARKER_LABEL_SIZE        = {"width": 12,  "height": 12};
     const CONTROL_PANEL_IMAGE_SIZE = {"width": 64,  "height": 64};
     const MAP_PADDING              = 48;
     const MAP_CENTER_ROTATION      = 0.0;
