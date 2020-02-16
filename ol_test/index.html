@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>OpenLayers Test</title>
+
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css">
+
+        <style>
+            html {
+                width:   100%;
+                height:  100%;
+                margin:  0px 0px 0px 0px;
+                padding: 0px 0px 0px 0px;
+            }
+            body {
+                width:   100%;
+                height:  100%;
+                margin:  0px 0px 0px 0px;
+                padding: 0px 0px 0px 0px;
+            }
+            #map {
+                width:  100%;
+                height: 100%;
+            }
+            #markerTooltip {
+                width:            auto;
+                height:           auto;
+                display:          none;
+                align-items:      center;
+                justify-content:  center;
+                flex-flow:        column;
+                background-color: steelblue;
+                border-radius:    8px;
+                overflow:         auto;
+            }
+            #markerTooltipText {
+                margin:     6px 6px 2px 6px;
+                text-align: center;
+                color:      white;
+                font-size:  10pt;
+            }
+        </style>
+
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/build/ol.js"></script>
+    </head>
+    <body>
+        <div id="map"></div>
+        <div id="markerTooltip">
+            <p id="markerTooltipText">TOOLTIP</p>
+        </div>
+
+        <script>
+            "use strict";
+
+            const IMAGE_SIZE        = {"width": 512, "height": 512};
+            const MARKER_IMAGE_SIZE = {"width": 48,  "height": 48};
+
+            function createMarkerImage(marker, src) {
+                return new ol.style.Icon({
+                    "img": (function() {
+                        function drawIcon() {
+                            if ((image && image.complete && image.naturalWidth > 0 && image.naturalHeight > 0)) {
+                                let radius  = Math.min(IMAGE_SIZE.width, IMAGE_SIZE.height) / 2;
+                                let context = canvas.getContext("2d");
+
+                                context.save();
+
+                                context.beginPath();
+                                context.arc(IMAGE_SIZE.width / 2, IMAGE_SIZE.height / 2, radius, 0, 2 * Math.PI, false);
+                                context.clip();
+
+                                if (image) {
+                                    context.drawImage(image, 0, 0, IMAGE_SIZE.width, IMAGE_SIZE.height);
+                                }
+
+                                context.restore();
+
+                                marker.changed();
+                            }
+                        }
+
+                        let canvas = document.createElement("canvas");
+
+                        canvas.width  = IMAGE_SIZE.width;
+                        canvas.height = IMAGE_SIZE.height;
+
+                        let image = document.createElement("img");
+
+                        image.src    = src;
+                        image.onload = drawIcon;
+
+                        return canvas;
+                    })(),
+                    "imgSize": [IMAGE_SIZE.width, IMAGE_SIZE.height],
+                    "scale":   Math.min(MARKER_IMAGE_SIZE.width  / IMAGE_SIZE.width,
+                                        MARKER_IMAGE_SIZE.height / IMAGE_SIZE.height)
+                });
+            }
+
+            let marker_source = new ol.source.Vector({
+                "features": []
+            });
+
+            let marker_layer = new ol.layer.Vector({
+                "source": marker_source
+            });
+
+            let map = new ol.Map({
+                "target": "map",
+                "layers": [
+                    new ol.layer.Tile({
+                        "source": new ol.source.OSM({
+                            "url": "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}@2x.png",
+                        })
+                    }),
+                    marker_layer
+                ],
+                "overlays": [
+                    new ol.Overlay({
+                        "id":          "markerTooltip",
+                        "element":     document.getElementById("markerTooltip"),
+                        "offset":      [8, 0],
+                        "positioning": "bottom-left"
+                    })
+                ],
+                "view": new ol.View({
+                    "center": ol.proj.fromLonLat([0.0, 0.0]),
+                    "zoom":   0
+                })
+            });
+
+            map.on("pointermove", function(event) {
+                marker_layer.getFeatures(event.pixel).then(function(features) {
+                    if (features && features.length > 0) {
+                        map.getOverlayById("markerTooltip").setPosition(event.coordinate);
+
+                        document.getElementById("markerTooltip").style.display = "flex";
+                    } else {
+                        document.getElementById("markerTooltip").style.display = "none";
+                    }
+                });
+            });
+
+            for (let i = 0; i < 10; i++) {
+                let marker = new ol.Feature({
+                    "geometry": new ol.geom.Point(ol.proj.fromLonLat([Math.random() * 360 - 180, Math.random() * 180 - 90]))
+                });
+
+                marker_source.addFeature(marker);
+
+                marker.setStyle(new ol.style.Style({
+                    "image": createMarkerImage(marker, "dilbert.png")
+                }));
+            }
+        </script>
+    </body>
+</html>
