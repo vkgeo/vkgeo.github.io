@@ -346,7 +346,7 @@ let VKGeo = (function() {
             return new Promise(function(resolve) {
                 enqueueVKApiRequest("friends.get", {
                     "fields": "photo_100",
-                    "count":  1,
+                    "count":  1, // DEBUG
                     "offset": offset,
                     "v":      VK_API_V
                 }, function(data) {
@@ -376,7 +376,7 @@ let VKGeo = (function() {
         }
 
         getFriends(0).then(function() {
-            console.log("DEBUG THEN 2: " + data);
+            console.log("DEBUG THEN 2");
             let friends_map         = {};
             let accessible_frnd_ids = [];
 
@@ -554,6 +554,7 @@ let VKGeo = (function() {
                 setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
             }
         }).catch(function() {
+            console.log("DEBUG CATCH 2");
             cleanupMarkers({});
 
             if (updateControlPanel({})) {
