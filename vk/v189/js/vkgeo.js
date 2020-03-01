@@ -352,7 +352,7 @@ let VKGeo = (function() {
                     resolve(data);
                 });
             }).then(function(data) {
-                if (data.response) {
+                if (data.response && false) { // DEBUG
                     friends_list = friends_list.concat(data.response.items);
 
                     if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
@@ -436,7 +436,7 @@ let VKGeo = (function() {
                             "code": execute_code,
                             "v":    VK_API_V
                         }, function(data) {
-                            if (data.response && false) { // DEBUG
+                            if (data.response) {
                                 for (let i = 0; i < data.response.length; i++) {
                                     if (data.response[i]) {
                                         for (let j = 0; j < data.response[i].length; j++) {
@@ -555,6 +555,7 @@ let VKGeo = (function() {
                 return Promise.reject();
             }
         }).catch(function() {
+            console.log("DEBUG: CATCH2");
             cleanupMarkers({});
 
             if (updateControlPanel({})) {
