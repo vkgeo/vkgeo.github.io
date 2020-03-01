@@ -346,15 +346,12 @@ let VKGeo = (function() {
             return new Promise(function(resolve) {
                 enqueueVKApiRequest("friends.get", {
                     "fields": "photo_100",
-                    "count":  1, // DEBUG
                     "offset": offset,
                     "v":      VK_API_V
                 }, function(data) {
-                    console.log("DEBUG: " + data);
                     resolve(data);
                 });
             }).then(function(data) {
-                console.log("DEBUG THEN 1: " + data);
                 if (data.response) {
                     friends_list = friends_list.concat(data.response.items);
 
@@ -376,7 +373,6 @@ let VKGeo = (function() {
         }
 
         getFriends(0).then(function() {
-            console.log("DEBUG THEN 2");
             let friends_map         = {};
             let accessible_frnd_ids = [];
 
@@ -414,13 +410,13 @@ let VKGeo = (function() {
                         }
                     }
                 } else {
-                    console.log("updateFriends() : invalid friend entry");
+                    console.warn("runPeriodicUpdate() : invalid friend entry");
                 }
             }
 
             if (accessible_frnd_ids.length > 0) {
-                let notes_req_count = 0;
-                let notes_list      = [];
+                let notes_req_list = [];
+                let notes_list     = [];
 
                 for (let i = 0; i < accessible_frnd_ids.length; i = i + VK_MAX_BATCH_SIZE) {
                     let execute_code = "return [";
@@ -435,126 +431,130 @@ let VKGeo = (function() {
 
                     execute_code = execute_code + "];";
 
-                    enqueueVKApiRequest("execute", {
-                        "code": execute_code,
-                        "v":    VK_API_V
-                    }, function(data) {
-                        if (data.response) {
-                            for (let i = 0; i < data.response.length; i++) {
-                                if (data.response[i]) {
-                                    for (let j = 0; j < data.response[i].length; j++) {
-                                        if (data.response[i][j] && data.response[i][j].title === DATA_NOTE_TITLE) {
-                                            notes_list.push(data.response[i][j]);
+                    notes_req_list.push(new Promise(function(resolve, reject) {
+                        enqueueVKApiRequest("execute", {
+                            "code": execute_code,
+                            "v":    VK_API_V
+                        }, function(data) {
+                            if (data.response) {
+                                for (let i = 0; i < data.response.length; i++) {
+                                    if (data.response[i]) {
+                                        for (let j = 0; j < data.response[i].length; j++) {
+                                            if (data.response[i][j] && data.response[i][j].title === DATA_NOTE_TITLE) {
+                                                notes_list.push(data.response[i][j]);
 
-                                            break;
+                                                break;
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        } else {
-                            if (data.error) {
-                                console.log("updateFriends() : execute(notes.get) request failed : " + data.error.error_msg);
+
+                                resolve();
                             } else {
-                                console.log("updateFriends() : execute(notes.get) request failed : " + data);
+                                if (data.error) {
+                                    console.error("runPeriodicUpdate() : execute(notes.get) request failed : " + data.error.error_msg);
+                                } else {
+                                    console.error("runPeriodicUpdate() : execute(notes.get) request failed : " + data);
+                                }
+
+                                reject();
                             }
-                        }
+                        });
+                    }));
 
-                        notes_req_count--;
+                    Promise.all(notes_req_list).then(function() {
+                        let updated_friends = {};
 
-                        if (notes_req_count === 0) {
-                            let updated_friends = {};
+                        for (let i = 0; i < notes_list.length; i++) {
+                            if (notes_list[i] && typeof notes_list[i].text     === "string" &&
+                                                 typeof notes_list[i].owner_id === "number" && isFinite(notes_list[i].owner_id)) {
+                                let user_id = notes_list[i].owner_id.toString();
 
-                            for (let i = 0; i < notes_list.length; i++) {
-                                if (notes_list[i] && typeof notes_list[i].text     === "string" &&
-                                                     typeof notes_list[i].owner_id === "number" && isFinite(notes_list[i].owner_id)) {
-                                    let user_id = notes_list[i].owner_id.toString();
+                                if (friends_map[user_id]) {
+                                    let base64_regexp = /\{\{\{([^\}]+)\}\}\}/;
+                                    let regexp_result = base64_regexp.exec(notes_list[i].text);
 
-                                    if (friends_map[user_id]) {
-                                        let base64_regexp = /\{\{\{([^\}]+)\}\}\}/;
-                                        let regexp_result = base64_regexp.exec(notes_list[i].text);
+                                    if (regexp_result && regexp_result.length === 2) {
+                                        let user_data = null;
 
-                                        if (regexp_result && regexp_result.length === 2) {
-                                            let user_data = null;
-
-                                            try {
-                                                user_data = JSON.parse(atob(regexp_result[1]));
-                                            } catch (ex) {
-                                                console.log("updateFriends() : invalid user data");
-                                            }
-
-                                            if (user_data && typeof user_data.update_time === "number" && isFinite(user_data.update_time) &&
-                                                             typeof user_data.latitude    === "number" && isFinite(user_data.latitude) &&
-                                                             typeof user_data.longitude   === "number" && isFinite(user_data.longitude)) {
-                                                friends_map[user_id].update_time = user_data.update_time;
-                                                friends_map[user_id].latitude    = user_data.latitude;
-                                                friends_map[user_id].longitude   = user_data.longitude;
-
-                                                let frnd_marker = marker_source.getFeatureById(user_id);
-
-                                                if (frnd_marker === null) {
-                                                    frnd_marker = new ol.Feature({
-                                                        "geometry": new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude]))
-                                                    });
-
-                                                    frnd_marker.setId(user_id);
-
-                                                    marker_source.addFeature(frnd_marker);
-                                                } else {
-                                                    frnd_marker.setGeometry(new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude])));
-                                                }
-
-                                                frnd_marker.setStyle(new ol.style.Style({
-                                                    "image": createMarkerImage(frnd_marker, friends_map[user_id].update_time, friends_map[user_id].photo_100)
-                                                }));
-
-                                                frnd_marker.set("firstName",  friends_map[user_id].first_name);
-                                                frnd_marker.set("lastName",   friends_map[user_id].last_name);
-                                                frnd_marker.set("updateTime", friends_map[user_id].update_time);
-
-                                                if (typeof user_data.battery_status === "string" &&
-                                                    typeof user_data.battery_level  === "number" && isFinite(user_data.battery_level)) {
-                                                    friends_map[user_id].battery_status = user_data.battery_status;
-                                                    friends_map[user_id].battery_level  = user_data.battery_level;
-                                                }
-
-                                                updated_friends[user_id] = true;
-                                            }
-                                        } else {
+                                        try {
+                                            user_data = JSON.parse(atob(regexp_result[1]));
+                                        } catch (ex) {
                                             console.log("updateFriends() : invalid user data");
                                         }
+
+                                        if (user_data && typeof user_data.update_time === "number" && isFinite(user_data.update_time) &&
+                                                         typeof user_data.latitude    === "number" && isFinite(user_data.latitude) &&
+                                                         typeof user_data.longitude   === "number" && isFinite(user_data.longitude)) {
+                                            friends_map[user_id].update_time = user_data.update_time;
+                                            friends_map[user_id].latitude    = user_data.latitude;
+                                            friends_map[user_id].longitude   = user_data.longitude;
+
+                                            let frnd_marker = marker_source.getFeatureById(user_id);
+
+                                            if (frnd_marker === null) {
+                                                frnd_marker = new ol.Feature({
+                                                    "geometry": new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude]))
+                                                });
+
+                                                frnd_marker.setId(user_id);
+
+                                                marker_source.addFeature(frnd_marker);
+                                            } else {
+                                                frnd_marker.setGeometry(new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude])));
+                                            }
+
+                                            frnd_marker.setStyle(new ol.style.Style({
+                                                "image": createMarkerImage(frnd_marker, friends_map[user_id].update_time, friends_map[user_id].photo_100)
+                                            }));
+
+                                            frnd_marker.set("firstName",  friends_map[user_id].first_name);
+                                            frnd_marker.set("lastName",   friends_map[user_id].last_name);
+                                            frnd_marker.set("updateTime", friends_map[user_id].update_time);
+
+                                            if (typeof user_data.battery_status === "string" &&
+                                                typeof user_data.battery_level  === "number" && isFinite(user_data.battery_level)) {
+                                                friends_map[user_id].battery_status = user_data.battery_status;
+                                                friends_map[user_id].battery_level  = user_data.battery_level;
+                                            }
+
+                                            updated_friends[user_id] = true;
+                                        }
+                                    } else {
+                                        console.log("updateFriends() : invalid user data");
                                     }
-                                } else {
-                                    console.log("updateFriends() : invalid note entry");
                                 }
-                            }
-
-                            cleanupMarkers(updated_friends);
-
-                            if (updateControlPanel(friends_map)) {
-                                hideInvitationPanel();
                             } else {
-                                showInvitationPanel();
+                                console.log("updateFriends() : invalid note entry");
                             }
-
-                            setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
                         }
-                    });
 
-                    notes_req_count++;
+                        cleanupMarkers(updated_friends);
+
+                        if (updateControlPanel(friends_map)) {
+                            hideInvitationPanel();
+                        } else {
+                            showInvitationPanel();
+                        }
+
+                        setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
+                    }).catch(function() {
+                        cleanupMarkers({});
+
+                        if (updateControlPanel({})) {
+                            hideInvitationPanel();
+                        } else {
+                            showInvitationPanel();
+                        }
+
+                        setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
+                    });
                 }
             } else {
-                cleanupMarkers({});
-
-                if (updateControlPanel({})) {
-                    hideInvitationPanel();
-                } else {
-                    showInvitationPanel();
-                }
-
-                setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
+                return Promise.reject();
             }
         }).catch(function() {
-            console.log("DEBUG CATCH 2");
+            console.log("DEBUG: REJECT");
             cleanupMarkers({});
 
             if (updateControlPanel({})) {
