@@ -352,26 +352,26 @@ let VKGeo = (function() {
                 }, function(data) {
                     console.log("DEBUG: " + data);
                     resolve(data);
-                }).then(function(data) {
-                    console.log("DEBUG THEN 1: " + data);
-                    if (data.response) {
-                        friends_list = friends_list.concat(data.response.items);
-
-                        if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
-                            return getFriends(offset + data.response.items.length);
-                        } else {
-                            return Promise.resolve();
-                        }
-                    } else {
-                        if (data.error) {
-                            console.error("getFriends() : friends.get request failed : " + data.error.error_msg);
-                        } else {
-                            console.error("getFriends() : friends.get request failed : " + data);
-                        }
-
-                        return Promise.reject();
-                    }
                 });
+            }).then(function(data) {
+                console.log("DEBUG THEN 1: " + data);
+                if (data.response) {
+                    friends_list = friends_list.concat(data.response.items);
+
+                    if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
+                        return getFriends(offset + data.response.items.length);
+                    } else {
+                        return Promise.resolve();
+                    }
+                } else {
+                    if (data.error) {
+                        console.error("getFriends() : friends.get request failed : " + data.error.error_msg);
+                    } else {
+                        console.error("getFriends() : friends.get request failed : " + data);
+                    }
+
+                    return Promise.reject();
+                }
             });
         }
 
