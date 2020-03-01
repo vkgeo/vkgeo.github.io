@@ -688,7 +688,7 @@ let VKGeo = (function() {
                             }).then(function(data) {
                                 if (my_marker === null) {
                                     if (data.response) {
-                                        if (Array.isArray(data.response) && data.response.length === 1) {
+                                        if (Array.isArray(data.response) && data.response.length === 1 && false) { // DEBUG
                                             if (typeof data.response[0].photo_100 === "string") {
                                                 my_photo_100 = data.response[0].photo_100;
                                             } else {
@@ -735,13 +735,13 @@ let VKGeo = (function() {
                                                 control_panel.appendChild(my_image);
                                             }
                                         } else {
-                                            console.warn("init() : invalid response to users.get request : " + JSON.stringify(data.response));
+                                            throw new Error("invalid response to users.get request : " + JSON.stringify(data.response));
                                         }
                                     } else {
                                         if (data.error) {
-                                            console.error("init() : users.get request failed : " + data.error.error_msg);
+                                            throw new Error("users.get request failed : " + data.error.error_msg);
                                         } else {
-                                            console.error("init() : users.get request failed : " + JSON.stringify(data));
+                                            throw new Error("users.get request failed : " + JSON.stringify(data));
                                         }
                                     }
                                 }
