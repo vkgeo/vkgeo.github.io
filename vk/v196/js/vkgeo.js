@@ -460,7 +460,7 @@ let VKGeo = (function() {
                 return Promise.reject();
             }
         }).then(function(data_list) {
-            console.log("DEBUG: THEN " + JSON.stringify(data_list));
+            console.log("DEBUG: THEN " + data_list.length + " " + JSON.stringify(data_list));
             try {
                 let notes_list = [];
 
