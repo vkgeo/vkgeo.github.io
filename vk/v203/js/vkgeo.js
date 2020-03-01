@@ -352,7 +352,7 @@ let VKGeo = (function() {
                     resolve(data);
                 });
             }).then(function(data) {
-                if (data.response && false) { // DEBUG
+                if (data.response) {
                     friends_list = friends_list.concat(data.response.items);
 
                     if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
