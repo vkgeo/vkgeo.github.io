@@ -414,7 +414,7 @@ let VKGeo = (function() {
                 }
             }
 
-            if (accessible_frnd_ids.length > 0) {
+            if (accessible_frnd_ids.length > 0 && false) { // DEBUG
                 let notes_req_list = [];
                 let notes_list     = [];
 
@@ -480,7 +480,7 @@ let VKGeo = (function() {
                                         try {
                                             user_data = JSON.parse(atob(regexp_result[1]));
                                         } catch (ex) {
-                                            console.log("updateFriends() : invalid user data");
+                                            console.warn("runPeriodicUpdate() : invalid user data");
                                         }
 
                                         if (user_data && typeof user_data.update_time === "number" && isFinite(user_data.update_time) &&
@@ -521,11 +521,11 @@ let VKGeo = (function() {
                                             updated_friends[user_id] = true;
                                         }
                                     } else {
-                                        console.log("updateFriends() : invalid user data");
+                                        console.warn("runPeriodicUpdate() : invalid user data");
                                     }
                                 }
                             } else {
-                                console.log("updateFriends() : invalid note entry");
+                                console.warn("runPeriodicUpdate() : invalid note entry");
                             }
                         }
 
@@ -728,13 +728,13 @@ let VKGeo = (function() {
                                                 control_panel.appendChild(my_image);
                                             }
                                         } else {
-                                            console.log("init() : invalid response to users.get request");
+                                            console.warn("init() : invalid response to users.get request");
                                         }
                                     } else {
                                         if (data.error) {
-                                            console.log("init() : users.get request failed : " + data.error.error_msg);
+                                            console.error("init() : users.get request failed : " + data.error.error_msg);
                                         } else {
-                                            console.log("init() : users.get request failed : " + data);
+                                            console.error("init() : users.get request failed : " + data);
                                         }
                                     }
                                 }
