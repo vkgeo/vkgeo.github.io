@@ -323,6 +323,7 @@ let VKGeo = (function() {
                 markers.forEach(function(item) {
                     if (item.getId() !== "" && !updated_friends[item.getId()]) {
                         markers_to_remove.push(item);
+                    }
                 });
 
                 markers_to_remove.forEach(function(item) {
