@@ -11,7 +11,7 @@ let VKGeo = (function() {
     const MAP_CENTER_ZOOM          = 16.0;
     const VK_ACCESS_SETTINGS       = 2048 | 2;
     const VK_REQUEST_INTERVAL      = 500;
-    const VK_MAX_BATCH_SIZE        = 25;
+    const VK_MAX_BATCH_SIZE        = 1; // DEBUG 25;
     const VK_MAX_NOTES_GET_COUNT   = 100;
     const VK_API_V                 = "5.102";
     const DATA_NOTE_TITLE          = "VKGeo Data";
@@ -346,6 +346,7 @@ let VKGeo = (function() {
             return new Promise(function(resolve) {
                 enqueueVKApiRequest("friends.get", {
                     "fields": "photo_100",
+                    "count":  1, // DEBUG
                     "offset": offset,
                     "v":      VK_API_V
                 }, function(data) {
