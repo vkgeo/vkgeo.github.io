@@ -352,7 +352,6 @@ let VKGeo = (function() {
                     resolve(data);
                 });
             }).then(function(data) {
-                console.log("DEBUG: getFriends THEN");
                 try {
                     if (data.response) {
                         friends_list = friends_list.concat(data.response.items);
@@ -459,7 +458,6 @@ let VKGeo = (function() {
                 return Promise.reject();
             }
         }).then(function(data_list) {
-            console.log("DEBUG: THEN " + data_list.length + " " + JSON.stringify(data_list));
             try {
                 let notes_list = [];
 
