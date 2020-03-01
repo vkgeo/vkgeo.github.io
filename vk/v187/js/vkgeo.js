@@ -414,7 +414,7 @@ let VKGeo = (function() {
                 }
             }
 
-            if (accessible_frnd_ids.length > 0 && false) { // DEBUG
+            if (accessible_frnd_ids.length > 0) {
                 let notes_req_list = [];
                 let notes_list     = [];
 
@@ -436,7 +436,7 @@ let VKGeo = (function() {
                             "code": execute_code,
                             "v":    VK_API_V
                         }, function(data) {
-                            if (data.response) {
+                            if (data.response && false) { // DEBUG
                                 for (let i = 0; i < data.response.length; i++) {
                                     if (data.response[i]) {
                                         for (let j = 0; j < data.response[i].length; j++) {
@@ -539,6 +539,7 @@ let VKGeo = (function() {
 
                         setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
                     }).catch(function() {
+                        console.log("DEBUG: CATCH1");
                         cleanupMarkers({});
 
                         if (updateControlPanel({})) {
@@ -554,7 +555,6 @@ let VKGeo = (function() {
                 return Promise.reject();
             }
         }).catch(function() {
-            console.log("DEBUG: REJECT");
             cleanupMarkers({});
 
             if (updateControlPanel({})) {
