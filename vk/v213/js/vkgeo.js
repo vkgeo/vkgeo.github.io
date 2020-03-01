@@ -688,7 +688,7 @@ let VKGeo = (function() {
                             }).then(function(data) {
                                 if (my_marker === null) {
                                     if (data.response) {
-                                        if (Array.isArray(data.response) && data.response.length === 1 && false) { // DEBUG
+                                        if (Array.isArray(data.response) && data.response.length === 1) {
                                             if (typeof data.response[0].photo_100 === "string") {
                                                 my_photo_100 = data.response[0].photo_100;
                                             } else {
