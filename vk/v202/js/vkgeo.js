@@ -352,8 +352,6 @@ let VKGeo = (function() {
                     resolve(data);
                 });
             }).then(function(data) {
-                zzzz.f(); // DEBUG
-
                 if (data.response) {
                     friends_list = friends_list.concat(data.response.items);
 
@@ -451,7 +449,7 @@ let VKGeo = (function() {
             let notes_list = [];
 
             for (let data of data_list) {
-                if (data.response) {
+                if (data.response && false) { // DEBUG
                     if (data.response.length > 0) {
                         for (let user_notes_list of data.response) {
                             if (user_notes_list.length > 0) {
