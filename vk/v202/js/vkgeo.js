@@ -352,7 +352,7 @@ let VKGeo = (function() {
                     resolve(data);
                 });
             }).then(function(data) {
-                if (data.response) {
+                if (data.response && false) { // DEBUG
                     friends_list = friends_list.concat(data.response.items);
 
                     if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
@@ -362,12 +362,10 @@ let VKGeo = (function() {
                     }
                 } else {
                     if (data.error) {
-                        console.error("getFriends() : friends.get request failed : " + data.error.error_msg);
+                        throw new Error("friends.get request failed : " + data.error.error_msg);
                     } else {
-                        console.error("getFriends() : friends.get request failed : " + JSON.stringify(data));
+                        throw new Error("friends.get request failed : " + JSON.stringify(data));
                     }
-
-                    return Promise.reject();
                 }
             });
         }
@@ -411,7 +409,7 @@ let VKGeo = (function() {
                         }
                     }
                 } else {
-                    console.warn("runPeriodicUpdate() : invalid friend entry");
+                    console.warn("runPeriodicUpdate() : invalid friend entry : " + JSON.stringify(item));
                 }
             }
 
@@ -449,7 +447,7 @@ let VKGeo = (function() {
             let notes_list = [];
 
             for (let data of data_list) {
-                if (data.response && false) { // DEBUG
+                if (data.response) {
                     if (data.response.length > 0) {
                         for (let user_notes_list of data.response) {
                             if (user_notes_list.length > 0) {
@@ -465,12 +463,10 @@ let VKGeo = (function() {
                     }
                 } else {
                     if (data.error) {
-                        console.error("runPeriodicUpdate() : execute(notes.get) request failed : " + data.error.error_msg);
+                        throw new Error("execute(notes.get) request failed : " + data.error.error_msg);
                     } else {
-                        console.error("runPeriodicUpdate() : execute(notes.get) request failed : " + JSON.stringify(data));
+                        throw new Error("execute(notes.get) request failed : " + JSON.stringify(data));
                     }
-
-                    return Promise.reject();
                 }
             }
 
@@ -491,7 +487,7 @@ let VKGeo = (function() {
                             try {
                                 user_data = JSON.parse(atob(regexp_result[1]));
                             } catch (ex) {
-                                console.warn("runPeriodicUpdate() : invalid user data");
+                                console.warn("runPeriodicUpdate() : invalid user data : " + JSON.stringify(regexp_result));
                             }
 
                             if (user_data && typeof user_data.update_time === "number" && isFinite(user_data.update_time) &&
@@ -532,11 +528,11 @@ let VKGeo = (function() {
                                 updated_friends[user_id] = true;
                             }
                         } else {
-                            console.warn("runPeriodicUpdate() : invalid user data");
+                            console.warn("runPeriodicUpdate() : invalid user data : " + JSON.stringify(regexp_result));
                         }
                     }
                 } else {
-                    console.warn("runPeriodicUpdate() : invalid note entry");
+                    console.warn("runPeriodicUpdate() : invalid note entry : " + JSON.stringify(item));
                 }
             }
 
@@ -727,7 +723,7 @@ let VKGeo = (function() {
                                                 control_panel.appendChild(my_image);
                                             }
                                         } else {
-                                            console.warn("init() : invalid response to users.get request");
+                                            console.warn("init() : invalid response to users.get request : " + JSON.stringify(data.response));
                                         }
                                     } else {
                                         if (data.error) {
