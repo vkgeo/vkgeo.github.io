@@ -11,7 +11,7 @@ let VKGeo = (function() {
     const MAP_CENTER_ZOOM          = 16.0;
     const VK_ACCESS_SETTINGS       = 2048 | 2;
     const VK_REQUEST_INTERVAL      = 500;
-    const VK_MAX_BATCH_SIZE        = 25;
+    const VK_MAX_BATCH_SIZE        = 1; //DEBUG 25;
     const VK_MAX_NOTES_GET_COUNT   = 100;
     const VK_API_V                 = "5.102";
     const DATA_NOTE_TITLE          = "VKGeo Data";
@@ -352,7 +352,7 @@ let VKGeo = (function() {
                     resolve(data);
                 });
             }).then(function(data) {
-                if (data.response && false) { // DEBUG
+                if (data.response) {
                     friends_list = friends_list.concat(data.response.items);
 
                     if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
@@ -449,6 +449,7 @@ let VKGeo = (function() {
                                     }
                                 }
 
+                                console.log("DEBUG: RESOLVE");
                                 resolve();
                             } else {
                                 if (data.error) {
@@ -539,7 +540,6 @@ let VKGeo = (function() {
 
                         setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
                     }).catch(function() {
-                        console.log("DEBUG: CATCH1");
                         cleanupMarkers({});
 
                         if (updateControlPanel({})) {
@@ -555,7 +555,6 @@ let VKGeo = (function() {
                 return Promise.reject();
             }
         }).catch(function() {
-            console.log("DEBUG: CATCH2");
             cleanupMarkers({});
 
             if (updateControlPanel({})) {
