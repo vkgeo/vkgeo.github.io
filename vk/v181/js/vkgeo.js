@@ -342,191 +342,192 @@ let VKGeo = (function() {
             }
         }
 
-        function updateFriends(data, offset) {
-            if (data.response) {
-                if (data.response.items) {
-                    friends_list = friends_list.concat(data.response.items);
+        function getFriends(offset) {
+            return new Promise(function(resolve) {
+                enqueueVKApiRequest("friends.get", {
+                    "fields": "photo_100",
+                    "count":  1,
+                    "offset": offset,
+                    "v":      VK_API_V
+                }, function(data) {
+                    resolve(data);
+                }).then(function(data) {
+                    if (data.response) {
+                        friends_list = friends_list.concat(data.response.items);
 
-                    if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
-                        let next_offset = offset + data.response.items.length;
-
-                        enqueueVKApiRequest("friends.get", {
-                            "fields": "photo_100",
-                            "offset": next_offset,
-                            "v":      VK_API_V
-                        }, function(data) {
-                            updateFriends(data, next_offset);
-                        });
+                        if (data.response.items.length > 0 && offset + data.response.items.length < data.response.count) {
+                            return getFriends(offset + data.response.items.length);
+                        } else {
+                            return Promise.resolve();
+                        }
                     } else {
-                        let friends_map         = {};
-                        let accessible_frnd_ids = [];
+                        if (data.error) {
+                            console.error("getFriends() : friends.get request failed : " + data.error.error_msg);
+                        } else {
+                            console.error("getFriends() : friends.get request failed : " + data);
+                        }
 
-                        for (let i = 0; i < friends_list.length; i++) {
-                            if (friends_list[i] && typeof friends_list[i].id === "number" && isFinite(friends_list[i].id)) {
-                                if (!friends_list[i].deactivated) {
-                                    let user_id = friends_list[i].id.toString();
+                        return Promise.reject();
+                    }
+                });
+            });
+        }
 
-                                    friends_map[user_id] = {};
+        getFriends(0).then(function() {
+            let friends_map         = {};
+            let accessible_frnd_ids = [];
 
-                                    if (typeof friends_list[i].first_name === "string") {
-                                        friends_map[user_id].first_name = friends_list[i].first_name;
-                                    } else {
-                                        friends_map[user_id].first_name = "";
-                                    }
-                                    if (typeof friends_list[i].last_name === "string") {
-                                        friends_map[user_id].last_name = friends_list[i].last_name;
-                                    } else {
-                                        friends_map[user_id].last_name = "";
-                                    }
-                                    if (typeof friends_list[i].photo_100 === "string") {
-                                        friends_map[user_id].photo_100 = friends_list[i].photo_100;
-                                    } else {
-                                        friends_map[user_id].photo_100 = DEFAULT_PHOTO_100_URL;
-                                    }
+            for (let i = 0; i < friends_list.length; i++) {
+                if (friends_list[i] && typeof friends_list[i].id === "number" && isFinite(friends_list[i].id)) {
+                    if (!friends_list[i].deactivated) {
+                        let user_id = friends_list[i].id.toString();
 
-                                    friends_map[user_id].update_time    = 0;
-                                    friends_map[user_id].latitude       = 0;
-                                    friends_map[user_id].longitude      = 0;
-                                    friends_map[user_id].battery_status = "";
-                                    friends_map[user_id].battery_level  = 0;
+                        friends_map[user_id] = {};
 
-                                    if (!friends_list[i].is_closed || friends_list[i].can_access_closed) {
-                                        accessible_frnd_ids.push(friends_list[i].id);
+                        if (typeof friends_list[i].first_name === "string") {
+                            friends_map[user_id].first_name = friends_list[i].first_name;
+                        } else {
+                            friends_map[user_id].first_name = "";
+                        }
+                        if (typeof friends_list[i].last_name === "string") {
+                            friends_map[user_id].last_name = friends_list[i].last_name;
+                        } else {
+                            friends_map[user_id].last_name = "";
+                        }
+                        if (typeof friends_list[i].photo_100 === "string") {
+                            friends_map[user_id].photo_100 = friends_list[i].photo_100;
+                        } else {
+                            friends_map[user_id].photo_100 = DEFAULT_PHOTO_100_URL;
+                        }
+
+                        friends_map[user_id].update_time    = 0;
+                        friends_map[user_id].latitude       = 0;
+                        friends_map[user_id].longitude      = 0;
+                        friends_map[user_id].battery_status = "";
+                        friends_map[user_id].battery_level  = 0;
+
+                        if (!friends_list[i].is_closed || friends_list[i].can_access_closed) {
+                            accessible_frnd_ids.push(friends_list[i].id);
+                        }
+                    }
+                } else {
+                    console.log("updateFriends() : invalid friend entry");
+                }
+            }
+
+            if (accessible_frnd_ids.length > 0) {
+                let notes_req_count = 0;
+                let notes_list      = [];
+
+                for (let i = 0; i < accessible_frnd_ids.length; i = i + VK_MAX_BATCH_SIZE) {
+                    let execute_code = "return [";
+
+                    for (let j = 0; j < VK_MAX_BATCH_SIZE && i + j < accessible_frnd_ids.length; j++) {
+                        execute_code = execute_code + "API.notes.get({\"user_id\":" + accessible_frnd_ids[i + j] + ",\"count\":" + VK_MAX_NOTES_GET_COUNT + ",\"sort\":0}).items";
+
+                        if (j < VK_MAX_BATCH_SIZE - 1 && i + j < accessible_frnd_ids.length - 1) {
+                            execute_code = execute_code + ",";
+                        }
+                    }
+
+                    execute_code = execute_code + "];";
+
+                    enqueueVKApiRequest("execute", {
+                        "code": execute_code,
+                        "v":    VK_API_V
+                    }, function(data) {
+                        if (data.response) {
+                            for (let i = 0; i < data.response.length; i++) {
+                                if (data.response[i]) {
+                                    for (let j = 0; j < data.response[i].length; j++) {
+                                        if (data.response[i][j] && data.response[i][j].title === DATA_NOTE_TITLE) {
+                                            notes_list.push(data.response[i][j]);
+
+                                            break;
+                                        }
                                     }
                                 }
+                            }
+                        } else {
+                            if (data.error) {
+                                console.log("updateFriends() : execute(notes.get) request failed : " + data.error.error_msg);
                             } else {
-                                console.log("updateFriends() : invalid friend entry");
+                                console.log("updateFriends() : execute(notes.get) request failed : " + data);
                             }
                         }
 
-                        if (accessible_frnd_ids.length > 0) {
-                            let notes_req_count = 0;
-                            let notes_list      = [];
+                        notes_req_count--;
 
-                            for (let i = 0; i < accessible_frnd_ids.length; i = i + VK_MAX_BATCH_SIZE) {
-                                let execute_code = "return [";
+                        if (notes_req_count === 0) {
+                            let updated_friends = {};
 
-                                for (let j = 0; j < VK_MAX_BATCH_SIZE && i + j < accessible_frnd_ids.length; j++) {
-                                    execute_code = execute_code + "API.notes.get({\"user_id\":" + accessible_frnd_ids[i + j] + ",\"count\":" + VK_MAX_NOTES_GET_COUNT + ",\"sort\":0}).items";
+                            for (let i = 0; i < notes_list.length; i++) {
+                                if (notes_list[i] && typeof notes_list[i].text     === "string" &&
+                                                     typeof notes_list[i].owner_id === "number" && isFinite(notes_list[i].owner_id)) {
+                                    let user_id = notes_list[i].owner_id.toString();
 
-                                    if (j < VK_MAX_BATCH_SIZE - 1 && i + j < accessible_frnd_ids.length - 1) {
-                                        execute_code = execute_code + ",";
+                                    if (friends_map[user_id]) {
+                                        let base64_regexp = /\{\{\{([^\}]+)\}\}\}/;
+                                        let regexp_result = base64_regexp.exec(notes_list[i].text);
+
+                                        if (regexp_result && regexp_result.length === 2) {
+                                            let user_data = null;
+
+                                            try {
+                                                user_data = JSON.parse(atob(regexp_result[1]));
+                                            } catch (ex) {
+                                                console.log("updateFriends() : invalid user data");
+                                            }
+
+                                            if (user_data && typeof user_data.update_time === "number" && isFinite(user_data.update_time) &&
+                                                             typeof user_data.latitude    === "number" && isFinite(user_data.latitude) &&
+                                                             typeof user_data.longitude   === "number" && isFinite(user_data.longitude)) {
+                                                friends_map[user_id].update_time = user_data.update_time;
+                                                friends_map[user_id].latitude    = user_data.latitude;
+                                                friends_map[user_id].longitude   = user_data.longitude;
+
+                                                let frnd_marker = marker_source.getFeatureById(user_id);
+
+                                                if (frnd_marker === null) {
+                                                    frnd_marker = new ol.Feature({
+                                                        "geometry": new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude]))
+                                                    });
+
+                                                    frnd_marker.setId(user_id);
+
+                                                    marker_source.addFeature(frnd_marker);
+                                                } else {
+                                                    frnd_marker.setGeometry(new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude])));
+                                                }
+
+                                                frnd_marker.setStyle(new ol.style.Style({
+                                                    "image": createMarkerImage(frnd_marker, friends_map[user_id].update_time, friends_map[user_id].photo_100)
+                                                }));
+
+                                                frnd_marker.set("firstName",  friends_map[user_id].first_name);
+                                                frnd_marker.set("lastName",   friends_map[user_id].last_name);
+                                                frnd_marker.set("updateTime", friends_map[user_id].update_time);
+
+                                                if (typeof user_data.battery_status === "string" &&
+                                                    typeof user_data.battery_level  === "number" && isFinite(user_data.battery_level)) {
+                                                    friends_map[user_id].battery_status = user_data.battery_status;
+                                                    friends_map[user_id].battery_level  = user_data.battery_level;
+                                                }
+
+                                                updated_friends[user_id] = true;
+                                            }
+                                        } else {
+                                            console.log("updateFriends() : invalid user data");
+                                        }
                                     }
+                                } else {
+                                    console.log("updateFriends() : invalid note entry");
                                 }
-
-                                execute_code = execute_code + "];";
-
-                                enqueueVKApiRequest("execute", {
-                                    "code": execute_code,
-                                    "v":    VK_API_V
-                                }, function(data) {
-                                    if (data.response) {
-                                        for (let i = 0; i < data.response.length; i++) {
-                                            if (data.response[i]) {
-                                                for (let j = 0; j < data.response[i].length; j++) {
-                                                    if (data.response[i][j] && data.response[i][j].title === DATA_NOTE_TITLE) {
-                                                        notes_list.push(data.response[i][j]);
-
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        if (data.error) {
-                                            console.log("updateFriends() : execute(notes.get) request failed : " + data.error.error_msg);
-                                        } else {
-                                            console.log("updateFriends() : execute(notes.get) request failed : " + data);
-                                        }
-                                    }
-
-                                    notes_req_count--;
-
-                                    if (notes_req_count === 0) {
-                                        let updated_friends = {};
-
-                                        for (let i = 0; i < notes_list.length; i++) {
-                                            if (notes_list[i] && typeof notes_list[i].text     === "string" &&
-                                                                 typeof notes_list[i].owner_id === "number" && isFinite(notes_list[i].owner_id)) {
-                                                let user_id = notes_list[i].owner_id.toString();
-
-                                                if (friends_map[user_id]) {
-                                                    let base64_regexp = /\{\{\{([^\}]+)\}\}\}/;
-                                                    let regexp_result = base64_regexp.exec(notes_list[i].text);
-
-                                                    if (regexp_result && regexp_result.length === 2) {
-                                                        let user_data = null;
-
-                                                        try {
-                                                            user_data = JSON.parse(atob(regexp_result[1]));
-                                                        } catch (ex) {
-                                                            console.log("updateFriends() : invalid user data");
-                                                        }
-
-                                                        if (user_data && typeof user_data.update_time === "number" && isFinite(user_data.update_time) &&
-                                                                         typeof user_data.latitude    === "number" && isFinite(user_data.latitude) &&
-                                                                         typeof user_data.longitude   === "number" && isFinite(user_data.longitude)) {
-                                                            friends_map[user_id].update_time = user_data.update_time;
-                                                            friends_map[user_id].latitude    = user_data.latitude;
-                                                            friends_map[user_id].longitude   = user_data.longitude;
-
-                                                            let frnd_marker = marker_source.getFeatureById(user_id);
-
-                                                            if (frnd_marker === null) {
-                                                                frnd_marker = new ol.Feature({
-                                                                    "geometry": new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude]))
-                                                                });
-
-                                                                frnd_marker.setId(user_id);
-
-                                                                marker_source.addFeature(frnd_marker);
-                                                            } else {
-                                                                frnd_marker.setGeometry(new ol.geom.Point(ol.proj.fromLonLat([friends_map[user_id].longitude, friends_map[user_id].latitude])));
-                                                            }
-
-                                                            frnd_marker.setStyle(new ol.style.Style({
-                                                                "image": createMarkerImage(frnd_marker, friends_map[user_id].update_time, friends_map[user_id].photo_100)
-                                                            }));
-
-                                                            frnd_marker.set("firstName",  friends_map[user_id].first_name);
-                                                            frnd_marker.set("lastName",   friends_map[user_id].last_name);
-                                                            frnd_marker.set("updateTime", friends_map[user_id].update_time);
-
-                                                            if (typeof user_data.battery_status === "string" &&
-                                                                typeof user_data.battery_level  === "number" && isFinite(user_data.battery_level)) {
-                                                                friends_map[user_id].battery_status = user_data.battery_status;
-                                                                friends_map[user_id].battery_level  = user_data.battery_level;
-                                                            }
-
-                                                            updated_friends[user_id] = true;
-                                                        }
-                                                    } else {
-                                                        console.log("updateFriends() : invalid user data");
-                                                    }
-                                                }
-                                            } else {
-                                                console.log("updateFriends() : invalid note entry");
-                                            }
-                                        }
-
-                                        cleanupMarkers(updated_friends);
-
-                                        if (updateControlPanel(friends_map)) {
-                                            hideInvitationPanel();
-                                        } else {
-                                            showInvitationPanel();
-                                        }
-
-                                        setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
-                                    }
-                                });
-
-                                notes_req_count++;
                             }
-                        } else {
-                            cleanupMarkers({});
 
-                            if (updateControlPanel({})) {
+                            cleanupMarkers(updated_friends);
+
+                            if (updateControlPanel(friends_map)) {
                                 hideInvitationPanel();
                             } else {
                                 showInvitationPanel();
@@ -534,34 +535,31 @@ let VKGeo = (function() {
 
                             setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
                         }
-                    }
-                } else {
-                    cleanupMarkers({});
+                    });
 
-                    if (updateControlPanel({})) {
-                        hideInvitationPanel();
-                    } else {
-                        showInvitationPanel();
-                    }
-
-                    setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
+                    notes_req_count++;
                 }
             } else {
-                if (data.error) {
-                    console.log("updateFriends() : friends.get request failed : " + data.error.error_msg);
+                cleanupMarkers({});
+
+                if (updateControlPanel({})) {
+                    hideInvitationPanel();
                 } else {
-                    console.log("updateFriends() : friends.get request failed : " + data);
+                    showInvitationPanel();
                 }
 
                 setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
             }
-        }
+        }).catch(function() {
+            cleanupMarkers({});
 
-        enqueueVKApiRequest("friends.get", {
-            "fields": "photo_100",
-            "v":      VK_API_V
-        }, function(data) {
-            updateFriends(data, 0);
+            if (updateControlPanel({})) {
+                hideInvitationPanel();
+            } else {
+                showInvitationPanel();
+            }
+
+            setTimeout(runPeriodicUpdate, UPDATE_INTERVAL);
         });
     }
 
