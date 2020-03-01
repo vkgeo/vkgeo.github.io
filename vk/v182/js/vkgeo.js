@@ -350,8 +350,10 @@ let VKGeo = (function() {
                     "offset": offset,
                     "v":      VK_API_V
                 }, function(data) {
+                    console.log("DEBUG: " + data);
                     resolve(data);
                 }).then(function(data) {
+                    console.log("DEBUG THEN 1: " + data);
                     if (data.response) {
                         friends_list = friends_list.concat(data.response.items);
 
@@ -374,6 +376,7 @@ let VKGeo = (function() {
         }
 
         getFriends(0).then(function() {
+            console.log("DEBUG THEN 2: " + data);
             let friends_map         = {};
             let accessible_frnd_ids = [];
 
