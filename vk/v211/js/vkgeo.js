@@ -678,10 +678,14 @@ let VKGeo = (function() {
                 if (navigator.geolocation) {
                     navigator.geolocation.watchPosition(function(position) {
                         if (my_marker === null) {
-                            enqueueVKApiRequest("users.get", {
-                                "fields": "photo_100",
-                                "v":      VK_API_V
-                            }, function(data) {
+                            new Promise(function(resolve) {
+                                enqueueVKApiRequest("users.get", {
+                                    "fields": "photo_100",
+                                    "v":      VK_API_V
+                                }, function(data) {
+                                    resolve(data);
+                                });
+                            }).then(function(data) {
                                 if (my_marker === null) {
                                     if (data.response) {
                                         if (Array.isArray(data.response) && data.response.length === 1) {
