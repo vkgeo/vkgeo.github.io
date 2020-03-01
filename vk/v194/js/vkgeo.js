@@ -378,9 +378,10 @@ let VKGeo = (function() {
             });
         }
 
+        let friends_map = {};
+
         getFriends(0).then(function() {
             try {
-                let friends_map         = {};
                 let accessible_frnd_ids = [];
 
                 friends_list.forEach(function(item) {
