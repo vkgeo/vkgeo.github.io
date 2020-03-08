@@ -343,7 +343,7 @@ let VKGeo = (function() {
         }
 
         function fetchFriends(offset) {
-            console.debug("CALLED");
+            console.log("DEBUG: CALLED");
             return new Promise(function(resolve) {
                 enqueueVKApiRequest("friends.get", {
                     "fields": "photo_100",
