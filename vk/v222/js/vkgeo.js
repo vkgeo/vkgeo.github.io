@@ -348,7 +348,6 @@ let VKGeo = (function() {
                 enqueueVKApiRequest("friends.get", {
                     "fields": "photo_100",
                     "offset": offset,
-                    "count":  1, // DEBUG
                     "v":      VK_API_V
                 }, function(data) {
                     resolve(data);
