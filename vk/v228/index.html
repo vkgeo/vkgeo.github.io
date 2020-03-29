@@ -45,23 +45,6 @@
                 return div.innerHTML;
             }
 
-            function getUrlParameter(name) {
-                name = name.replace(/[\[\]]/g, "\\$&");
-
-                var regex   = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
-                var results = regex.exec(window.location.href);
-
-                if (results) {
-                    if (results[2]) {
-                        return decodeURIComponent(results[2].replace(/\+/g, " "));
-                    } else {
-                        return "";
-                    }
-                } else {
-                    return null;
-                }
-            }
-
             function displayFatalError(error_text) {
                 document.getElementById("fatalErrorPanelText").innerHTML = escapeHtml(error_text);
 
@@ -85,7 +68,13 @@
             }
 
             document.addEventListener("DOMContentLoaded", function() {
-                var language = getUrlParameter("language");
+                var language = null;
+
+                try {
+                    language = (new URL(document.location)).searchParams.get("language");
+                } catch (ex) {
+                    console.warn("DOMContentLoaded handler : %o", ex);
+                }
 
                 if (language !== null) {
                     var lng_value  = parseInt(language, 10);
