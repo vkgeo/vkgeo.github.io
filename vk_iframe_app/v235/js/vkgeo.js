@@ -746,7 +746,7 @@ let VKGeo = (function() {
                             my_marker.setGeometry(new ol.geom.Point(ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude])));
 
                             my_marker.setStyle(new ol.style.Style({
-                                "image": createMarkerImage(my_marker, current_time, my_photo_100)
+                                "image": createMarkerImage(my_marker, 0, my_photo_100)
                             }));
 
                             my_marker.set("updateTime", current_time);
