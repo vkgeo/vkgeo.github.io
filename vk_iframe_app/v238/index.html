@@ -72,14 +72,36 @@
                 try {
                     language = (new URL(document.location)).searchParams.get("language");
                 } finally {
+                    var icu_ready         = false;
+                    var translation_ready = false;
+
+                    var icu_script         = document.createElement("script");
+                    var translation_script = document.createElement("script");
+
+                    icu_script.onload = function() {
+                        icu_ready = true;
+
+                        if (icu_ready && translation_ready) {
+                            loadAppScript();
+                        }
+                    };
+
+                    translation_script.onload = function() {
+                        translation_ready = true;
+
+                        if (icu_ready && translation_ready) {
+                            loadAppScript();
+                        }
+                    };
+
+                    document.getElementsByTagName("head")[0].appendChild(icu_script);
+                    document.getElementsByTagName("head")[0].appendChild(translation_script);
+
+                    var icu_src         = "lib/localeplanet/icu/icu.en.js";
+                    var translation_src = null;
+
                     if (language !== null) {
                         var lng_value = parseInt(language, 10);
-
-                        var translation_script = document.createElement("script");
-                        var icu_script         = document.createElement("script");
-
-                        var translation_script_loaded = false;
-                        var icu_script_loaded         = false;
 
                         if (
                             lng_value === 0   || // Russian
@@ -94,30 +116,23 @@
                             lng_value === 87  || // Kirgiz
                             lng_value === 97     // Kazakh
                         ) {
-                            translation_script.src    = "translations/vkgeo_ru.js";
-                            translation_script.onload = function() {
-                                translation_script_loaded = true;
-
-                                if (translation_script_loaded && icu_script_loaded) {
-                                    loadAppScript();
-                                }
-                            };
-
-                            icu_script.src    = "lib/localeplanet/icu/icu.ru.js";
-                            icu_script.onload = function() {
-                                icu_script_loaded = true;
-
-                                if (translation_script_loaded && icu_script_loaded) {
-                                    loadAppScript();
-                                }
-                            };
-
-                            document.getElementsByTagName("head")[0].appendChild(translation_script);
-                            document.getElementsByTagName("head")[0].appendChild(icu_script);
-                        } else {
-                            loadAppScript();
+                            icu_src         = "lib/localeplanet/icu/icu.ru.js";
+                            translation_src = "translations/vkgeo_ru.js";
                         }
+                    }
+
+                    if (icu_src) {
+                        icu_script.src = icu_src;
                     } else {
+                        icu_ready = true;
+                    }
+                    if (translation_src) {
+                        translation_script.src = translation_src;
+                    } else {
+                        translation_ready = true;
+                    }
+
+                    if (icu_ready && translation_ready) {
                         loadAppScript();
                     }
                 }
