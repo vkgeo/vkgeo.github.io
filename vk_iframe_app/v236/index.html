@@ -73,8 +73,13 @@
                     language = (new URL(document.location)).searchParams.get("language");
                 } finally {
                     if (language !== null) {
-                        var lng_value  = parseInt(language, 10);
-                        var lng_script = document.createElement("script");
+                        var lng_value = parseInt(language, 10);
+
+                        var translation_script = document.createElement("script");
+                        var icu_script         = document.createElement("script");
+
+                        var translation_script_loaded = false;
+                        var icu_script_loaded         = false;
 
                         if (
                             lng_value === 0   || // Russian
@@ -89,10 +94,26 @@
                             lng_value === 87  || // Kirgiz
                             lng_value === 97     // Kazakh
                         ) {
-                            lng_script.src    = "translations/vkgeo_ru.js";
-                            lng_script.onload = loadAppScript;
+                            translation_script.src    = "translations/vkgeo_ru.js";
+                            translation_script.onload = function() {
+                                translation_script_loaded = true;
 
-                            document.getElementsByTagName("head")[0].appendChild(lng_script);
+                                if (translation_script_loaded && icu_script_loaded) {
+                                    loadAppScript();
+                                }
+                            };
+
+                            icu_script.src    = "lib/localeplanet/icu/icu.ru.js";
+                            icu_script.onload = function() {
+                                icu_script_loaded = true;
+
+                                if (translation_script_loaded && icu_script_loaded) {
+                                    loadAppScript();
+                                }
+                            };
+
+                            document.getElementsByTagName("head")[0].appendChild(translation_script);
+                            document.getElementsByTagName("head")[0].appendChild(icu_script);
                         } else {
                             loadAppScript();
                         }
