@@ -121,19 +121,12 @@
                         }
                     }
 
-                    if (icu_src) {
-                        icu_script.src = icu_src;
-                    } else {
-                        icu_ready = true;
-                    }
+                    icu_script.src = icu_src;
+
                     if (translation_src) {
                         translation_script.src = translation_src;
                     } else {
-                        translation_ready = true;
-                    }
-
-                    if (icu_ready && translation_ready) {
-                        loadAppScript();
+                        //translation_ready = true;
                     }
                 }
             });
