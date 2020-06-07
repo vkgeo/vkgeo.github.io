@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ar-TN" };
 	icu.getLocaleName = function() { return "العربية (تونس)" };
 
-	module.exports = icu;
 })();

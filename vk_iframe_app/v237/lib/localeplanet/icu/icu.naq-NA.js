@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "naq-NA" };
 	icu.getLocaleName = function() { return "Khoekhoegowab (Namibiab)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "br" };
 	icu.getLocaleName = function() { return "brezhoneg" };
 
-	module.exports = icu;
 })();

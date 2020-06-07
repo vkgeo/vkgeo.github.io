@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-NC" };
 	icu.getLocaleName = function() { return "français (Nouvelle-Calédonie)" };
 
-	module.exports = icu;
 })();

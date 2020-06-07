@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-ML" };
 	icu.getLocaleName = function() { return "français (Mali)" };
 
-	module.exports = icu;
 })();

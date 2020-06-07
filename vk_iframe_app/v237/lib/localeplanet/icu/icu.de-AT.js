@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "de-AT" };
 	icu.getLocaleName = function() { return "Deutsch (Österreich)" };
 
-	module.exports = icu;
 })();

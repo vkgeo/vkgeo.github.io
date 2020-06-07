@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pt-MO" };
 	icu.getLocaleName = function() { return "português (Macau, RAE da China)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "asa" };
 	icu.getLocaleName = function() { return "Kipare" };
 
-	module.exports = icu;
 })();

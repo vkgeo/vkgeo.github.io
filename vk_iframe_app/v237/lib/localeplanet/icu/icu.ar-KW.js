@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ar-KW" };
 	icu.getLocaleName = function() { return "العربية (الكويت)" };
 
-	module.exports = icu;
 })();

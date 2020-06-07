@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ru-KG" };
 	icu.getLocaleName = function() { return "русский (Киргизия)" };
 
-	module.exports = icu;
 })();

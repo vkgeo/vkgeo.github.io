@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "dav-KE" };
 	icu.getLocaleName = function() { return "Kitaita (Kenya)" };
 
-	module.exports = icu;
 })();

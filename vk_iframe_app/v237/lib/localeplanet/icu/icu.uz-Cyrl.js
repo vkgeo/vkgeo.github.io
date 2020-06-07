@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "uz-Cyrl" };
 	icu.getLocaleName = function() { return "ўзбекча (Кирил)" };
 
-	module.exports = icu;
 })();

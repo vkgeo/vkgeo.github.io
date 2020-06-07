@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "کٲشُر (اَربی, ہِنٛدوستان)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-GM" };
 	icu.getLocaleName = function() { return "English (Gambia)" };
 
-	module.exports = icu;
 })();

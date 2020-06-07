@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nyn-UG" };
 	icu.getLocaleName = function() { return "Runyankore (Uganda)" };
 
-	module.exports = icu;
 })();

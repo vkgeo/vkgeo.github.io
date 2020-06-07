@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ky-KG" };
 	icu.getLocaleName = function() { return "кыргызча (Кыргызстан)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sq" };
 	icu.getLocaleName = function() { return "shqip" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kkj-CM" };
 	icu.getLocaleName = function() { return "kakɔ (Kamɛrun)" };
 
-	module.exports = icu;
 })();

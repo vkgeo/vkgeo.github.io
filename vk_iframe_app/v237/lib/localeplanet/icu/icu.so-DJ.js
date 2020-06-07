@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "so-DJ" };
 	icu.getLocaleName = function() { return "Soomaali (Jabuuti)" };
 
-	module.exports = icu;
 })();

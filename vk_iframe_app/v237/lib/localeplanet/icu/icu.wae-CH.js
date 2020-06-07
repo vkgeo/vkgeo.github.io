@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "wae-CH" };
 	icu.getLocaleName = function() { return "Walser (Schwiz)" };
 
-	module.exports = icu;
 })();

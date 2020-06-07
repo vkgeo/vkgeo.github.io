@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "agq" };
 	icu.getLocaleName = function() { return "Aghem" };
 
-	module.exports = icu;
 })();

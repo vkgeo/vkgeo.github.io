@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nyn" };
 	icu.getLocaleName = function() { return "Runyankore" };
 
-	module.exports = icu;
 })();

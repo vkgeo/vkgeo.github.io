@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-IC" };
 	icu.getLocaleName = function() { return "español (Canarias)" };
 
-	module.exports = icu;
 })();

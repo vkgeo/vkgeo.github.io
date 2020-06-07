@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-PE" };
 	icu.getLocaleName = function() { return "español (Perú)" };
 
-	module.exports = icu;
 })();

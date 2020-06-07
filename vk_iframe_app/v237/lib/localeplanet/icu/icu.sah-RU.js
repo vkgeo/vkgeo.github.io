@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sah-RU" };
 	icu.getLocaleName = function() { return "саха тыла (Арассыыйа)" };
 
-	module.exports = icu;
 })();

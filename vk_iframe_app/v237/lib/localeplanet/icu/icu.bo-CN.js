@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bo-CN" };
 	icu.getLocaleName = function() { return "བོད་སྐད་ (རྒྱ་ནག)" };
 
-	module.exports = icu;
 })();

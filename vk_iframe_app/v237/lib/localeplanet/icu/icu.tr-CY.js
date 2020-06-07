@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "tr-CY" };
 	icu.getLocaleName = function() { return "Türkçe (Kıbrıs)" };
 
-	module.exports = icu;
 })();

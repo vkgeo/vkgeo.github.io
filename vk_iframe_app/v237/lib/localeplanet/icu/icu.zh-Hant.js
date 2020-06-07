@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "zh-Hant" };
 	icu.getLocaleName = function() { return "中文（繁體）" };
 
-	module.exports = icu;
 })();

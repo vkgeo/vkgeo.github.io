@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ff" };
 	icu.getLocaleName = function() { return "Pulaar" };
 
-	module.exports = icu;
 })();

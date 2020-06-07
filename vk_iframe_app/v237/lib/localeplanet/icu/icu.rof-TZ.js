@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rof-TZ" };
 	icu.getLocaleName = function() { return "Kihorombo (Tanzania)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-TZ" };
 	icu.getLocaleName = function() { return "English (Tanzania)" };
 
-	module.exports = icu;
 })();

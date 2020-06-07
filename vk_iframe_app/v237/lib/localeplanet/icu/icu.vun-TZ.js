@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "vun-TZ" };
 	icu.getLocaleName = function() { return "Kyivunjo (Tanzania)" };
 
-	module.exports = icu;
 })();

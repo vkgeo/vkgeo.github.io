@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-VG" };
 	icu.getLocaleName = function() { return "English (British Virgin Islands)" };
 
-	module.exports = icu;
 })();

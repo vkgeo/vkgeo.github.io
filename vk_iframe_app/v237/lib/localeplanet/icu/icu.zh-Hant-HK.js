@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "zh-Hant-HK" };
 	icu.getLocaleName = function() { return "中文（繁體字，中國香港特別行政區）" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mk" };
 	icu.getLocaleName = function() { return "македонски" };
 
-	module.exports = icu;
 })();

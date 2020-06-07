@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-EA" };
 	icu.getLocaleName = function() { return "español (Ceuta y Melilla)" };
 
-	module.exports = icu;
 })();

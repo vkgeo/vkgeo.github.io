@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "zu-ZA" };
 	icu.getLocaleName = function() { return "isiZulu (iNingizimu Afrika)" };
 
-	module.exports = icu;
 })();

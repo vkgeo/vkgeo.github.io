@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kde-TZ" };
 	icu.getLocaleName = function() { return "Chimakonde (Tanzania)" };
 
-	module.exports = icu;
 })();

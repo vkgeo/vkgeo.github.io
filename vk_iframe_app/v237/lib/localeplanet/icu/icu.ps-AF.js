@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ps-AF" };
 	icu.getLocaleName = function() { return "پښتو (افغانستان)" };
 
-	module.exports = icu;
 })();

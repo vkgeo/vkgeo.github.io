@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Wolaytta (Ethiopia)" };
 
-	module.exports = icu;
 })();

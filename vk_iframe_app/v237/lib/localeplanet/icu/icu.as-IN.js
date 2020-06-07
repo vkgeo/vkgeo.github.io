@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "as-IN" };
 	icu.getLocaleName = function() { return "অসমীয়া (ভারত)" };
 
-	module.exports = icu;
 })();

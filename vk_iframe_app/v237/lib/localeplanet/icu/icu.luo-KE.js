@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "luo-KE" };
 	icu.getLocaleName = function() { return "Dholuo (Kenya)" };
 
-	module.exports = icu;
 })();

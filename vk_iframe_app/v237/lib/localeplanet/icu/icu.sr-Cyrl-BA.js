@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sr-Cyrl-BA" };
 	icu.getLocaleName = function() { return "српски (ћирилица, Босна и Херцеговина)" };
 
-	module.exports = icu;
 })();

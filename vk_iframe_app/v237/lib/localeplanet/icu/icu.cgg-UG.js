@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "cgg-UG" };
 	icu.getLocaleName = function() { return "Rukiga (Uganda)" };
 
-	module.exports = icu;
 })();

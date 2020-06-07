@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "cs-CZ" };
 	icu.getLocaleName = function() { return "čeština (Česko)" };
 
-	module.exports = icu;
 })();

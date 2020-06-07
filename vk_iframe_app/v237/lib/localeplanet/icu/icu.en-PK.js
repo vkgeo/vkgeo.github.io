@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-PK" };
 	icu.getLocaleName = function() { return "English (Pakistan)" };
 
-	module.exports = icu;
 })();

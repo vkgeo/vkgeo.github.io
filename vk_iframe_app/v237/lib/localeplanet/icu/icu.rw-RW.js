@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rw-RW" };
 	icu.getLocaleName = function() { return "Kinyarwanda (U Rwanda)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Tamaziɣt n laṭlaṣ (Latn, Meṛṛuk)" };
 
-	module.exports = icu;
 })();

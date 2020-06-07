@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ar-BH" };
 	icu.getLocaleName = function() { return "العربية (البحرين)" };
 
-	module.exports = icu;
 })();

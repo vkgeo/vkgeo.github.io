@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fa-AF" };
 	icu.getLocaleName = function() { return "فارسی (افغانستان)" };
 
-	module.exports = icu;
 })();

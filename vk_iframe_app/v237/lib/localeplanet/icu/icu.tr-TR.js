@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "tr-TR" };
 	icu.getLocaleName = function() { return "Türkçe (Türkiye)" };
 
-	module.exports = icu;
 })();

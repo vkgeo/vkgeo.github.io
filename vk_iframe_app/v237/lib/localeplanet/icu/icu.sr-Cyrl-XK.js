@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sr-Cyrl-XK" };
 	icu.getLocaleName = function() { return "српски (ћирилица, Косово)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kam" };
 	icu.getLocaleName = function() { return "Kikamba" };
 
-	module.exports = icu;
 })();

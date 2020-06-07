@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "so-KE" };
 	icu.getLocaleName = function() { return "Soomaali (Kiiniya)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-MW" };
 	icu.getLocaleName = function() { return "English (Malawi)" };
 
-	module.exports = icu;
 })();

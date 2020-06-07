@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "dje" };
 	icu.getLocaleName = function() { return "Zarmaciine" };
 
-	module.exports = icu;
 })();

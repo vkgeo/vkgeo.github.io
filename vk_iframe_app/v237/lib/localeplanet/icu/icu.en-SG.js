@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-SG" };
 	icu.getLocaleName = function() { return "English (Singapore)" };
 
-	module.exports = icu;
 })();

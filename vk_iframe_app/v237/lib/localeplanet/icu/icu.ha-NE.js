@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Hausa (Nijar)" };
 
-	module.exports = icu;
 })();

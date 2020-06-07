@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mt" };
 	icu.getLocaleName = function() { return "Malti" };
 
-	module.exports = icu;
 })();

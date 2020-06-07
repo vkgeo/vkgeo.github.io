@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ksf-CM" };
 	icu.getLocaleName = function() { return "rikpa (kamɛrún)" };
 
-	module.exports = icu;
 })();

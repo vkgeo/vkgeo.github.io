@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "luy-KE" };
 	icu.getLocaleName = function() { return "Luluhia (Kenya)" };
 
-	module.exports = icu;
 })();

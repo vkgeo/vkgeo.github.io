@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-DO" };
 	icu.getLocaleName = function() { return "español (República Dominicana)" };
 
-	module.exports = icu;
 })();

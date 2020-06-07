@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-MF" };
 	icu.getLocaleName = function() { return "français (Saint-Martin)" };
 
-	module.exports = icu;
 })();

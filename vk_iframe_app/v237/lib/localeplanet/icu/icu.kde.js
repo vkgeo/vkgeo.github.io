@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kde" };
 	icu.getLocaleName = function() { return "Chimakonde" };
 
-	module.exports = icu;
 })();

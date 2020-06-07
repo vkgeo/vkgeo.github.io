@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "to" };
 	icu.getLocaleName = function() { return "lea fakatonga" };
 
-	module.exports = icu;
 })();

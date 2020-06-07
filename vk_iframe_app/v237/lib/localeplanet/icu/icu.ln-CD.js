@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ln-CD" };
 	icu.getLocaleName = function() { return "lingála (Republíki ya Kongó Demokratíki)" };
 
-	module.exports = icu;
 })();

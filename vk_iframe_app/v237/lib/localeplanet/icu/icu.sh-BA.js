@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Srpskohrvatski (Bosna i Hercegovina)" };
 
-	module.exports = icu;
 })();

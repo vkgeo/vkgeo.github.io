@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sq-XK" };
 	icu.getLocaleName = function() { return "shqip (Kosovë)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "guz-KE" };
 	icu.getLocaleName = function() { return "Ekegusii (Kenya)" };
 
-	module.exports = icu;
 })();

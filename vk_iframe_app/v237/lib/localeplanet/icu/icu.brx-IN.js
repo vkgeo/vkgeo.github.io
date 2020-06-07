@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "brx-IN" };
 	icu.getLocaleName = function() { return "बड़ो (भारत)" };
 
-	module.exports = icu;
 })();

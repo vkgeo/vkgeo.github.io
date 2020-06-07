@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-RE" };
 	icu.getLocaleName = function() { return "français (La Réunion)" };
 
-	module.exports = icu;
 })();

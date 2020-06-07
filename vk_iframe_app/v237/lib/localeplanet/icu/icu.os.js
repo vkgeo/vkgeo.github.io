@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "os" };
 	icu.getLocaleName = function() { return "ирон" };
 
-	module.exports = icu;
 })();

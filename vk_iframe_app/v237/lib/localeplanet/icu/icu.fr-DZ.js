@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-DZ" };
 	icu.getLocaleName = function() { return "français (Algérie)" };
 
-	module.exports = icu;
 })();

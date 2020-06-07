@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ln-CF" };
 	icu.getLocaleName = function() { return "lingála (Repibiki ya Afríka ya Káti)" };
 
-	module.exports = icu;
 })();

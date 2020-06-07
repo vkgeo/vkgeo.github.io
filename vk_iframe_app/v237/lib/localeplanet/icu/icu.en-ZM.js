@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-ZM" };
 	icu.getLocaleName = function() { return "English (Zambia)" };
 
-	module.exports = icu;
 })();

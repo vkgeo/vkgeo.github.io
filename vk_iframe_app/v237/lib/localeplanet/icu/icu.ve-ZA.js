@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Venda (South Africa)" };
 
-	module.exports = icu;
 })();

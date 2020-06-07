@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "shi-Tfng-MA" };
 	icu.getLocaleName = function() { return "ⵜⴰⵛⵍⵃⵉⵜ (Tfng, ⵍⵎⵖⵔⵉⴱ)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "saq-KE" };
 	icu.getLocaleName = function() { return "Kisampur (Kenya)" };
 
-	module.exports = icu;
 })();

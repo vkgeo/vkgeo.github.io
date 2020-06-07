@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sw-UG" };
 	icu.getLocaleName = function() { return "Kiswahili (Uganda)" };
 
-	module.exports = icu;
 })();

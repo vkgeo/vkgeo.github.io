@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-TG" };
 	icu.getLocaleName = function() { return "français (Togo)" };
 
-	module.exports = icu;
 })();

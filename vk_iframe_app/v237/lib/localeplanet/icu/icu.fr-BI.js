@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-BI" };
 	icu.getLocaleName = function() { return "français (Burundi)" };
 
-	module.exports = icu;
 })();

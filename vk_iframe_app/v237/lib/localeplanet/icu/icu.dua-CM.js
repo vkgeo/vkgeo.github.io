@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "dua-CM" };
 	icu.getLocaleName = function() { return "duálá (Cameroun)" };
 
-	module.exports = icu;
 })();

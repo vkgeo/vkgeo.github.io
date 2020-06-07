@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-PW" };
 	icu.getLocaleName = function() { return "English (Palau)" };
 
-	module.exports = icu;
 })();

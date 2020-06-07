@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nmg" };
 	icu.getLocaleName = function() { return "nmg" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "gv" };
 	icu.getLocaleName = function() { return "Gaelg" };
 
-	module.exports = icu;
 })();

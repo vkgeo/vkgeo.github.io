@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kab" };
 	icu.getLocaleName = function() { return "Taqbaylit" };
 
-	module.exports = icu;
 })();

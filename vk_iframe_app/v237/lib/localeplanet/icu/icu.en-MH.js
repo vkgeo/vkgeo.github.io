@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-MH" };
 	icu.getLocaleName = function() { return "English (Marshall Islands)" };
 
-	module.exports = icu;
 })();

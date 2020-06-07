@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fil-PH" };
 	icu.getLocaleName = function() { return "Filipino (Pilipinas)" };
 
-	module.exports = icu;
 })();

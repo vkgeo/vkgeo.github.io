@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mer-KE" };
 	icu.getLocaleName = function() { return "Kĩmĩrũ (Kenya)" };
 
-	module.exports = icu;
 })();

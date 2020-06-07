@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mgo" };
 	icu.getLocaleName = function() { return "metaʼ" };
 
-	module.exports = icu;
 })();

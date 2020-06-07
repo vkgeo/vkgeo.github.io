@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-HN" };
 	icu.getLocaleName = function() { return "español (Honduras)" };
 
-	module.exports = icu;
 })();

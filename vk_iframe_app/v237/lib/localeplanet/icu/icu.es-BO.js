@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-BO" };
 	icu.getLocaleName = function() { return "español (Bolivia)" };
 
-	module.exports = icu;
 })();

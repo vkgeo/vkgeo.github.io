@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "be-BY" };
 	icu.getLocaleName = function() { return "беларуская (Беларусь)" };
 
-	module.exports = icu;
 })();

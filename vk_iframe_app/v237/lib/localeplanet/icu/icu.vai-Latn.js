@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "vai-Latn" };
 	icu.getLocaleName = function() { return "Vai (Latn)" };
 
-	module.exports = icu;
 })();

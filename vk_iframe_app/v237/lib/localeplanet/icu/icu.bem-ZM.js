@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bem-ZM" };
 	icu.getLocaleName = function() { return "Ichibemba (Zambia)" };
 
-	module.exports = icu;
 })();

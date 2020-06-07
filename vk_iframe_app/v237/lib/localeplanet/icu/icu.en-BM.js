@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-BM" };
 	icu.getLocaleName = function() { return "English (Bermuda)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "om" };
 	icu.getLocaleName = function() { return "Oromoo" };
 
-	module.exports = icu;
 })();

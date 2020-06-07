@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "hu-HU" };
 	icu.getLocaleName = function() { return "magyar (Magyarország)" };
 
-	module.exports = icu;
 })();

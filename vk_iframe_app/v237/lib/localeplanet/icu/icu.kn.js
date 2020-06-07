@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kn" };
 	icu.getLocaleName = function() { return "ಕನ್ನಡ" };
 
-	module.exports = icu;
 })();

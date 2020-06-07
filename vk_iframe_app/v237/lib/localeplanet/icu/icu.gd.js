@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "gd" };
 	icu.getLocaleName = function() { return "Gàidhlig" };
 
-	module.exports = icu;
 })();

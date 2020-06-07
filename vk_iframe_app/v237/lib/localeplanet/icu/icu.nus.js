@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nus" };
 	icu.getLocaleName = function() { return "Thok Nath" };
 
-	module.exports = icu;
 })();

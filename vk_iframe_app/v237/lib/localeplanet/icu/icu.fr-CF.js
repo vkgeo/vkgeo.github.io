@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-CF" };
 	icu.getLocaleName = function() { return "français (République centrafricaine)" };
 
-	module.exports = icu;
 })();

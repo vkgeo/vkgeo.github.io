@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ewo" };
 	icu.getLocaleName = function() { return "ewondo" };
 
-	module.exports = icu;
 })();

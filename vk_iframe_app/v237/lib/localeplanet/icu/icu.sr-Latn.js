@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sr-Latn" };
 	icu.getLocaleName = function() { return "srpski (latinica)" };
 
-	module.exports = icu;
 })();

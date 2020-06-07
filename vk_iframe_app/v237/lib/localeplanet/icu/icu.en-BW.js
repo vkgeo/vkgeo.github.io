@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-BW" };
 	icu.getLocaleName = function() { return "English (Botswana)" };
 
-	module.exports = icu;
 })();

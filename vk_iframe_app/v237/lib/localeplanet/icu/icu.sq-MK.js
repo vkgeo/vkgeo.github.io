@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sq-MK" };
 	icu.getLocaleName = function() { return "shqip (Maqedoni)" };
 
-	module.exports = icu;
 })();

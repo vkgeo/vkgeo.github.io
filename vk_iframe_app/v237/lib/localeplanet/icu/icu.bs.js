@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bs" };
 	icu.getLocaleName = function() { return "bosanski" };
 
-	module.exports = icu;
 })();

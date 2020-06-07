@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-PH" };
 	icu.getLocaleName = function() { return "English (Philippines)" };
 
-	module.exports = icu;
 })();

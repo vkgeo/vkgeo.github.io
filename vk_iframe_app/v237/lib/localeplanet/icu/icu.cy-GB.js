@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "cy-GB" };
 	icu.getLocaleName = function() { return "Cymraeg (Y Deyrnas Unedig)" };
 
-	module.exports = icu;
 })();

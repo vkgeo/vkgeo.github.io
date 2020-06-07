@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nd" };
 	icu.getLocaleName = function() { return "isiNdebele" };
 
-	module.exports = icu;
 })();

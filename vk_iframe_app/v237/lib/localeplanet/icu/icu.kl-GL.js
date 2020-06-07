@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kl-GL" };
 	icu.getLocaleName = function() { return "kalaallisut (Kalaallit Nunaat)" };
 
-	module.exports = icu;
 })();

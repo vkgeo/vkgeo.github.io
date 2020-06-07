@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "lag-TZ" };
 	icu.getLocaleName = function() { return "Kɨlaangi (Taansanía)" };
 
-	module.exports = icu;
 })();

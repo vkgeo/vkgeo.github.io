@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bs-Latn" };
 	icu.getLocaleName = function() { return "bosanski (latinica)" };
 
-	module.exports = icu;
 })();

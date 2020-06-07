@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bez-TZ" };
 	icu.getLocaleName = function() { return "Hibena (Hutanzania)" };
 
-	module.exports = icu;
 })();

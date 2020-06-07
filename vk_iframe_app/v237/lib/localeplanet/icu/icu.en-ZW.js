@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-ZW" };
 	icu.getLocaleName = function() { return "English (Zimbabwe)" };
 
-	module.exports = icu;
 })();

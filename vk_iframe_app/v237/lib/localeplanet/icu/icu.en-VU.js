@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-VU" };
 	icu.getLocaleName = function() { return "English (Vanuatu)" };
 
-	module.exports = icu;
 })();

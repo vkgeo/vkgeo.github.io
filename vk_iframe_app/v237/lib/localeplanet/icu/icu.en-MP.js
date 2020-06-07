@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-MP" };
 	icu.getLocaleName = function() { return "English (Northern Mariana Islands)" };
 
-	module.exports = icu;
 })();

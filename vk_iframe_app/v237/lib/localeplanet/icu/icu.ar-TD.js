@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ar-TD" };
 	icu.getLocaleName = function() { return "العربية (تشاد)" };
 
-	module.exports = icu;
 })();

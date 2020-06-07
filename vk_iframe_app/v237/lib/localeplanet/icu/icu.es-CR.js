@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-CR" };
 	icu.getLocaleName = function() { return "español (Costa Rica)" };
 
-	module.exports = icu;
 })();

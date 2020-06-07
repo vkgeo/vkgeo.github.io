@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-LR" };
 	icu.getLocaleName = function() { return "English (Liberia)" };
 
-	module.exports = icu;
 })();

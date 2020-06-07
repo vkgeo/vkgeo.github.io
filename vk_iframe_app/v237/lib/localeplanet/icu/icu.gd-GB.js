@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "gd-GB" };
 	icu.getLocaleName = function() { return "Gàidhlig (An Rìoghachd Aonaichte)" };
 
-	module.exports = icu;
 })();

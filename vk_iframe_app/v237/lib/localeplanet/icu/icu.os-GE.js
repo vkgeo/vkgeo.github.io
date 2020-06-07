@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "os-GE" };
 	icu.getLocaleName = function() { return "ирон (Гуырдзыстон)" };
 
-	module.exports = icu;
 })();

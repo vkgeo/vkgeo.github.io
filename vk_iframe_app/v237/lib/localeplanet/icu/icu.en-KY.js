@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-KY" };
 	icu.getLocaleName = function() { return "English (Cayman Islands)" };
 
-	module.exports = icu;
 })();

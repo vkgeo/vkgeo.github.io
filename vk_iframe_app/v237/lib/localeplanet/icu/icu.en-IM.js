@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-IM" };
 	icu.getLocaleName = function() { return "English (Isle of Man)" };
 
-	module.exports = icu;
 })();

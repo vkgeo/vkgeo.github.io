@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "lu" };
 	icu.getLocaleName = function() { return "Tshiluba" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bez" };
 	icu.getLocaleName = function() { return "Hibena" };
 
-	module.exports = icu;
 })();

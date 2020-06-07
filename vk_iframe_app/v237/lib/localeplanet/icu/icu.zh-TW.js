@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "zh_Hant_TW" };
 	icu.getLocaleName = function() { return "中文（台灣）" };
 
-	module.exports = icu;
 })();

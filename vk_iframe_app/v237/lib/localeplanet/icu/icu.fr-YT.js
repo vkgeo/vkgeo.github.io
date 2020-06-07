@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-YT" };
 	icu.getLocaleName = function() { return "français (Mayotte)" };
 
-	module.exports = icu;
 })();

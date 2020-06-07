@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nd-ZW" };
 	icu.getLocaleName = function() { return "isiNdebele (Zimbabwe)" };
 
-	module.exports = icu;
 })();

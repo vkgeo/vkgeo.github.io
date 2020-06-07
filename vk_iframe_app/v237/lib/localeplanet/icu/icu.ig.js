@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ig" };
 	icu.getLocaleName = function() { return "Igbo" };
 
-	module.exports = icu;
 })();

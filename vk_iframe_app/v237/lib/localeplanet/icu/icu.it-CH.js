@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "it-CH" };
 	icu.getLocaleName = function() { return "italiano (Svizzera)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Melayu (Latin, Singapura)" };
 
-	module.exports = icu;
 })();

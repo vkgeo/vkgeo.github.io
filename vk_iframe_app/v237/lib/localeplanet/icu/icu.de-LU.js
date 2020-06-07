@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "de-LU" };
 	icu.getLocaleName = function() { return "Deutsch (Luxemburg)" };
 
-	module.exports = icu;
 })();

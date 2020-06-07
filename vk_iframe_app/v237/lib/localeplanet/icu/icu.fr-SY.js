@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-SY" };
 	icu.getLocaleName = function() { return "français (Syrie)" };
 
-	module.exports = icu;
 })();

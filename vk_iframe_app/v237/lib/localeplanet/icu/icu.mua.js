@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mua" };
 	icu.getLocaleName = function() { return "MUNDAŊ" };
 
-	module.exports = icu;
 })();

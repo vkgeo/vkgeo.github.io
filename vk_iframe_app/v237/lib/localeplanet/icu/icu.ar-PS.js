@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ar-PS" };
 	icu.getLocaleName = function() { return "العربية (الأراضي الفلسطينية)" };
 
-	module.exports = icu;
 })();

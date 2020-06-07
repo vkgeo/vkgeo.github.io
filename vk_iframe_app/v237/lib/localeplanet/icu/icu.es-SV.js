@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-SV" };
 	icu.getLocaleName = function() { return "español (El Salvador)" };
 
-	module.exports = icu;
 })();

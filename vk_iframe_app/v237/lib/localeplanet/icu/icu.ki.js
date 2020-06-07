@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ki" };
 	icu.getLocaleName = function() { return "Gikuyu" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "id" };
 	icu.getLocaleName = function() { return "Indonesia" };
 
-	module.exports = icu;
 })();

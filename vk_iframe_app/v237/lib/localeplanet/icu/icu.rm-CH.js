@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rm-CH" };
 	icu.getLocaleName = function() { return "rumantsch (Svizra)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "dyo-SN" };
 	icu.getLocaleName = function() { return "joola (Senegal)" };
 
-	module.exports = icu;
 })();

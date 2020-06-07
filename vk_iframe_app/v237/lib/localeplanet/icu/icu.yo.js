@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "yo" };
 	icu.getLocaleName = function() { return "Èdè Yorùbá" };
 
-	module.exports = icu;
 })();

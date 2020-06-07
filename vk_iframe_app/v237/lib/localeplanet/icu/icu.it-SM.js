@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "it-SM" };
 	icu.getLocaleName = function() { return "italiano (San Marino)" };
 
-	module.exports = icu;
 })();

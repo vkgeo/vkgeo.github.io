@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-PG" };
 	icu.getLocaleName = function() { return "English (Papua New Guinea)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "af-NA" };
 	icu.getLocaleName = function() { return "Afrikaans (Namibië)" };
 
-	module.exports = icu;
 })();

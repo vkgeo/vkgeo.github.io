@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-BB" };
 	icu.getLocaleName = function() { return "English (Barbados)" };
 
-	module.exports = icu;
 })();

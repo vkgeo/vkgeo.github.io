@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "shi-Latn-MA" };
 	icu.getLocaleName = function() { return "Tashelḥiyt (Latn, lmɣrib)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-GN" };
 	icu.getLocaleName = function() { return "français (Guinée)" };
 
-	module.exports = icu;
 })();

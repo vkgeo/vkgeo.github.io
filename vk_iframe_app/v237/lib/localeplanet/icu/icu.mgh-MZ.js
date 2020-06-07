@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mgh-MZ" };
 	icu.getLocaleName = function() { return "Makua (Umozambiki)" };
 
-	module.exports = icu;
 })();

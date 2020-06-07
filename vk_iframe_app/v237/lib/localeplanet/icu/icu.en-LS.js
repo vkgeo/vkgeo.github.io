@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-LS" };
 	icu.getLocaleName = function() { return "English (Lesotho)" };
 
-	module.exports = icu;
 })();

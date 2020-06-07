@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ne-IN" };
 	icu.getLocaleName = function() { return "नेपाली (भारत)" };
 
-	module.exports = icu;
 })();

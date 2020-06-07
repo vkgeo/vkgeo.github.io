@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ig-NG" };
 	icu.getLocaleName = function() { return "Igbo (Naịjịrịa)" };
 
-	module.exports = icu;
 })();

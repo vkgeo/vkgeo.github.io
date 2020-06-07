@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-LC" };
 	icu.getLocaleName = function() { return "English (St. Lucia)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sr" };
 	icu.getLocaleName = function() { return "српски" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "om-KE" };
 	icu.getLocaleName = function() { return "Oromoo (Keeniyaa)" };
 
-	module.exports = icu;
 })();

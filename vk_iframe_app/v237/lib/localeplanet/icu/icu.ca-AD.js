@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ca-AD" };
 	icu.getLocaleName = function() { return "català (Andorra)" };
 
-	module.exports = icu;
 })();

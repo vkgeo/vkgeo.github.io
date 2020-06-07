@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ps" };
 	icu.getLocaleName = function() { return "پښتو" };
 
-	module.exports = icu;
 })();

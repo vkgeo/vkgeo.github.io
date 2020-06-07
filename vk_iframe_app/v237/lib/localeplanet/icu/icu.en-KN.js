@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-KN" };
 	icu.getLocaleName = function() { return "English (St. Kitts & Nevis)" };
 
-	module.exports = icu;
 })();

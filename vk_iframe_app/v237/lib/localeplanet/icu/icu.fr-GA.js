@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-GA" };
 	icu.getLocaleName = function() { return "français (Gabon)" };
 
-	module.exports = icu;
 })();

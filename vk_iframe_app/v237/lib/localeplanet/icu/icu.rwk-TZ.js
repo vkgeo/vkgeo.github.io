@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rwk-TZ" };
 	icu.getLocaleName = function() { return "Kiruwa (Tanzania)" };
 
-	module.exports = icu;
 })();

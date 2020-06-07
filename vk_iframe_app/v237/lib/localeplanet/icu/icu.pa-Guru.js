@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pa-Guru" };
 	icu.getLocaleName = function() { return "ਪੰਜਾਬੀ (ਗੁਰਮੁਖੀ)" };
 
-	module.exports = icu;
 })();

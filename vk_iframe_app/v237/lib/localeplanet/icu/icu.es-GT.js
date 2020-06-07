@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-GT" };
 	icu.getLocaleName = function() { return "español (Guatemala)" };
 
-	module.exports = icu;
 })();

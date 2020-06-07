@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nl-SR" };
 	icu.getLocaleName = function() { return "Nederlands (Suriname)" };
 
-	module.exports = icu;
 })();

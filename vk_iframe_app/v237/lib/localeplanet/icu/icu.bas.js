@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bas" };
 	icu.getLocaleName = function() { return "Ɓàsàa" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nmg-CM" };
 	icu.getLocaleName = function() { return "nmg (Kamerun)" };
 
-	module.exports = icu;
 })();

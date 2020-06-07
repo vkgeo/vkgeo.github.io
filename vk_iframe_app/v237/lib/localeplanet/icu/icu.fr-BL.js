@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-BL" };
 	icu.getLocaleName = function() { return "français (Saint-Barthélemy)" };
 
-	module.exports = icu;
 })();

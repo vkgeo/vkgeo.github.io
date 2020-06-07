@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-VC" };
 	icu.getLocaleName = function() { return "English (St. Vincent & Grenadines)" };
 
-	module.exports = icu;
 })();

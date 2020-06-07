@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fur-IT" };
 	icu.getLocaleName = function() { return "furlan (Italie)" };
 
-	module.exports = icu;
 })();

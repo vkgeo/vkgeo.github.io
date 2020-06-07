@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sq-AL" };
 	icu.getLocaleName = function() { return "shqip (Shqipëri)" };
 
-	module.exports = icu;
 })();

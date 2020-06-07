@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mgo-CM" };
 	icu.getLocaleName = function() { return "metaʼ (Kamalun)" };
 
-	module.exports = icu;
 })();

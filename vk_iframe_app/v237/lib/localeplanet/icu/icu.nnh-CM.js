@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nnh-CM" };
 	icu.getLocaleName = function() { return "Shwóŋò ngiembɔɔn (Kàmalûm)" };
 
-	module.exports = icu;
 })();

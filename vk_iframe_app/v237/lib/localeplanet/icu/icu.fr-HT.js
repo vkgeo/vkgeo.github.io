@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-HT" };
 	icu.getLocaleName = function() { return "français (Haïti)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "lag" };
 	icu.getLocaleName = function() { return "Kɨlaangi" };
 
-	module.exports = icu;
 })();

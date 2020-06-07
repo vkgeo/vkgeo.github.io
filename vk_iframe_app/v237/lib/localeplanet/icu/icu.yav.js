@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "yav" };
 	icu.getLocaleName = function() { return "nuasue" };
 
-	module.exports = icu;
 })();

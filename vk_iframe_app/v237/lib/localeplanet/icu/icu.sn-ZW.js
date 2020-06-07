@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sn-ZW" };
 	icu.getLocaleName = function() { return "chiShona (Zimbabwe)" };
 
-	module.exports = icu;
 })();

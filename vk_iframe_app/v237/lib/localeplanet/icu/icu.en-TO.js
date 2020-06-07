@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-TO" };
 	icu.getLocaleName = function() { return "English (Tonga)" };
 
-	module.exports = icu;
 })();

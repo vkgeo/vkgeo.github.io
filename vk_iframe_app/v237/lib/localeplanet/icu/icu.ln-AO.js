@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ln-AO" };
 	icu.getLocaleName = function() { return "lingála (Angóla)" };
 
-	module.exports = icu;
 })();

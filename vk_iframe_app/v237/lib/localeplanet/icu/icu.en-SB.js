@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-SB" };
 	icu.getLocaleName = function() { return "English (Solomon Islands)" };
 
-	module.exports = icu;
 })();

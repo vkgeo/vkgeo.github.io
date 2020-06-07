@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-GD" };
 	icu.getLocaleName = function() { return "English (Grenada)" };
 
-	module.exports = icu;
 })();

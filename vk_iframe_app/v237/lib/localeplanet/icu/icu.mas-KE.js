@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mas-KE" };
 	icu.getLocaleName = function() { return "Maa (Kenya)" };
 
-	module.exports = icu;
 })();

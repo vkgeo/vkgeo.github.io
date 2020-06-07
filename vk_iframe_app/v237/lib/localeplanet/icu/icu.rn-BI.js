@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rn-BI" };
 	icu.getLocaleName = function() { return "Ikirundi (Uburundi)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ar-KM" };
 	icu.getLocaleName = function() { return "العربية (جزر القمر)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mgh" };
 	icu.getLocaleName = function() { return "Makua" };
 
-	module.exports = icu;
 })();

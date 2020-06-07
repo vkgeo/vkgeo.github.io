@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ksf" };
 	icu.getLocaleName = function() { return "rikpa" };
 
-	module.exports = icu;
 })();

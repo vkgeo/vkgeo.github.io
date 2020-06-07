@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "lu-CD" };
 	icu.getLocaleName = function() { return "Tshiluba (Ditunga wa Kongu)" };
 
-	module.exports = icu;
 })();

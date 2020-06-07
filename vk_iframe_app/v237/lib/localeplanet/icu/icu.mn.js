@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mn" };
 	icu.getLocaleName = function() { return "монгол" };
 
-	module.exports = icu;
 })();

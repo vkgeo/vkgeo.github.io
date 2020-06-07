@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kea" };
 	icu.getLocaleName = function() { return "kabuverdianu" };
 
-	module.exports = icu;
 })();

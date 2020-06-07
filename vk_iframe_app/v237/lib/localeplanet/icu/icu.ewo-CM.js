@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ewo-CM" };
 	icu.getLocaleName = function() { return "ewondo (Kamərún)" };
 
-	module.exports = icu;
 })();

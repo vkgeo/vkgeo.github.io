@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "yav-CM" };
 	icu.getLocaleName = function() { return "nuasue (Kemelún)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "saq" };
 	icu.getLocaleName = function() { return "Kisampur" };
 
-	module.exports = icu;
 })();

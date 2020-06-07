@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sr-Latn-BA" };
 	icu.getLocaleName = function() { return "srpski (latinica, Bosna i Hercegovina)" };
 
-	module.exports = icu;
 })();

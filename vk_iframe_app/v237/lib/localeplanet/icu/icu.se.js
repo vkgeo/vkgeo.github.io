@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "se" };
 	icu.getLocaleName = function() { return "davvisámegiella" };
 
-	module.exports = icu;
 })();

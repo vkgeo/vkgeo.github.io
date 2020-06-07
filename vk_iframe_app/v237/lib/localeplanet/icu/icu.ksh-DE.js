@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ksh-DE" };
 	icu.getLocaleName = function() { return "Kölsch en Doütschland" };
 
-	module.exports = icu;
 })();

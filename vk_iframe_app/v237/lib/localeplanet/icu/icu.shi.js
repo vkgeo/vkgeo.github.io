@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "shi" };
 	icu.getLocaleName = function() { return "ⵜⴰⵛⵍⵃⵉⵜ" };
 
-	module.exports = icu;
 })();

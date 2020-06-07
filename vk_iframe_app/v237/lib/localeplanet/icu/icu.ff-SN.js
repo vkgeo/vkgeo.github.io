@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ff-SN" };
 	icu.getLocaleName = function() { return "Pulaar (Senegaal)" };
 
-	module.exports = icu;
 })();

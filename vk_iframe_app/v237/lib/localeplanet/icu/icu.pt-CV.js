@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pt-CV" };
 	icu.getLocaleName = function() { return "português (Cabo Verde)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pt-GW" };
 	icu.getLocaleName = function() { return "português (Guiné-Bissau)" };
 
-	module.exports = icu;
 })();

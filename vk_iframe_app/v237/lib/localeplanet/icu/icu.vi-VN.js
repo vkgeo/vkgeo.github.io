@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "vi-VN" };
 	icu.getLocaleName = function() { return "Tiếng Việt (Việt Nam)" };
 
-	module.exports = icu;
 })();

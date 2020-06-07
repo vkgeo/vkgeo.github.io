@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-SS" };
 	icu.getLocaleName = function() { return "English (South Sudan)" };
 
-	module.exports = icu;
 })();

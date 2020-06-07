@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-BF" };
 	icu.getLocaleName = function() { return "français (Burkina Faso)" };
 
-	module.exports = icu;
 })();

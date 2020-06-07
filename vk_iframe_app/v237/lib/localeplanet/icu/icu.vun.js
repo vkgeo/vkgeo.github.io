@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "vun" };
 	icu.getLocaleName = function() { return "Kyivunjo" };
 
-	module.exports = icu;
 })();

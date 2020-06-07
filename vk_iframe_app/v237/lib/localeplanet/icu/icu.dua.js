@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "dua" };
 	icu.getLocaleName = function() { return "duálá" };
 
-	module.exports = icu;
 })();

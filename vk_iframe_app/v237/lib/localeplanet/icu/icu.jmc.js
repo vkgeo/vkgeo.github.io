@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "jmc" };
 	icu.getLocaleName = function() { return "Kimachame" };
 
-	module.exports = icu;
 })();

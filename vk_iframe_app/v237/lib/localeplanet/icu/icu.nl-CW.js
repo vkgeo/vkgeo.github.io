@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nl-CW" };
 	icu.getLocaleName = function() { return "Nederlands (Curaçao)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rwk" };
 	icu.getLocaleName = function() { return "Kiruwa" };
 
-	module.exports = icu;
 })();

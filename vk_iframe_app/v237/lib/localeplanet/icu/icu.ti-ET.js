@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ti-ET" };
 	icu.getLocaleName = function() { return "ትግርኛ (ኢትዮጵያ)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-ZA" };
 	icu.getLocaleName = function() { return "English (South Africa)" };
 
-	module.exports = icu;
 })();

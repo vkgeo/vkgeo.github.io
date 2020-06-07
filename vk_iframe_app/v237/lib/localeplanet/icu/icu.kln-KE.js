@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kln-KE" };
 	icu.getLocaleName = function() { return "Kalenjin (Emetab Kenya)" };
 
-	module.exports = icu;
 })();

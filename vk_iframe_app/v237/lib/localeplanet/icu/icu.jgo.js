@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "jgo" };
 	icu.getLocaleName = function() { return "Ndaꞌa" };
 
-	module.exports = icu;
 })();

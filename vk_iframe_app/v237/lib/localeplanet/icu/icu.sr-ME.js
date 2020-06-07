@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sr_Cyrl_ME" };
 	icu.getLocaleName = function() { return "Srpski (Crna Gora)" };
 
-	module.exports = icu;
 })();

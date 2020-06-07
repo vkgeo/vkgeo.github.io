@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fa-IR" };
 	icu.getLocaleName = function() { return "فارسی (ایران)" };
 
-	module.exports = icu;
 })();

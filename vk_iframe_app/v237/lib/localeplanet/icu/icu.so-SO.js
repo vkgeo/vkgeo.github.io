@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "so-SO" };
 	icu.getLocaleName = function() { return "Soomaali (Soomaaliya)" };
 
-	module.exports = icu;
 })();

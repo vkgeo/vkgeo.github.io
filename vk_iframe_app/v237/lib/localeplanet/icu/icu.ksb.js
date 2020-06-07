@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ksb" };
 	icu.getLocaleName = function() { return "Kishambaa" };
 
-	module.exports = icu;
 })();

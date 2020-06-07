@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mas" };
 	icu.getLocaleName = function() { return "Maa" };
 
-	module.exports = icu;
 })();

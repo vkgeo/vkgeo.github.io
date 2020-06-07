@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-CD" };
 	icu.getLocaleName = function() { return "français (Congo-Kinshasa)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-CL" };
 	icu.getLocaleName = function() { return "español (Chile)" };
 
-	module.exports = icu;
 })();

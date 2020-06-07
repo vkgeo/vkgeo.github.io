@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rof" };
 	icu.getLocaleName = function() { return "Kihorombo" };
 
-	module.exports = icu;
 })();

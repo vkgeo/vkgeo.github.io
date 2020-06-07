@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-NI" };
 	icu.getLocaleName = function() { return "español (Nicaragua)" };
 
-	module.exports = icu;
 })();

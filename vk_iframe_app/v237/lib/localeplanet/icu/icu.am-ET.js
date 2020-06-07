@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "am-ET" };
 	icu.getLocaleName = function() { return "አማርኛ (ኢትዮጵያ)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kok-IN" };
 	icu.getLocaleName = function() { return "कोंकणी (भारत)" };
 
-	module.exports = icu;
 })();

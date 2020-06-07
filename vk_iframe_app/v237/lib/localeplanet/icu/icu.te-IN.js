@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "te-IN" };
 	icu.getLocaleName = function() { return "తెలుగు (భారతదేశం)" };
 
-	module.exports = icu;
 })();

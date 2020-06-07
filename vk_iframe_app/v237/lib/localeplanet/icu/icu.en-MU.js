@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-MU" };
 	icu.getLocaleName = function() { return "English (Mauritius)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-UG" };
 	icu.getLocaleName = function() { return "English (Uganda)" };
 
-	module.exports = icu;
 })();

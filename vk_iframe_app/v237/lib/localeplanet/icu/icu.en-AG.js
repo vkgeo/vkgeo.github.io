@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-AG" };
 	icu.getLocaleName = function() { return "English (Antigua & Barbuda)" };
 
-	module.exports = icu;
 })();

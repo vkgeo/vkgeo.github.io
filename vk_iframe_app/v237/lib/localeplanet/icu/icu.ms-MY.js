@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ms-MY" };
 	icu.getLocaleName = function() { return "Bahasa Melayu (Malaysia)" };
 
-	module.exports = icu;
 })();

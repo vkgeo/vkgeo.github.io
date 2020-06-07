@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sw" };
 	icu.getLocaleName = function() { return "Kiswahili" };
 
-	module.exports = icu;
 })();

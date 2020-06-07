@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "dz-BT" };
 	icu.getLocaleName = function() { return "རྫོང་ཁ། (འབྲུག།)" };
 
-	module.exports = icu;
 })();

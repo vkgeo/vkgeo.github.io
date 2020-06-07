@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pt-ST" };
 	icu.getLocaleName = function() { return "português (São Tomé e Príncipe)" };
 
-	module.exports = icu;
 })();

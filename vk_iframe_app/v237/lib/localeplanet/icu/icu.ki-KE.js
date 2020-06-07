@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ki-KE" };
 	icu.getLocaleName = function() { return "Gikuyu (Kenya)" };
 
-	module.exports = icu;
 })();

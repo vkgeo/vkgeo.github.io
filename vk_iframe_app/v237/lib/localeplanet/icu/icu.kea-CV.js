@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kea-CV" };
 	icu.getLocaleName = function() { return "kabuverdianu (Kabu Verdi)" };
 
-	module.exports = icu;
 })();

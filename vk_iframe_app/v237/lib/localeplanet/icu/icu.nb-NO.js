@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nb-NO" };
 	icu.getLocaleName = function() { return "norsk bokmål (Norge)" };
 
-	module.exports = icu;
 })();

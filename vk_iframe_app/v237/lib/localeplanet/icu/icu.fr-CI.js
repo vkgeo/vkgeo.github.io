@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-CI" };
 	icu.getLocaleName = function() { return "français (Côte d’Ivoire)" };
 
-	module.exports = icu;
 })();

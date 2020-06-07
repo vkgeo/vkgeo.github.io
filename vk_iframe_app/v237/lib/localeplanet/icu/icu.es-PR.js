@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-PR" };
 	icu.getLocaleName = function() { return "español (Puerto Rico)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "zh-Hans-MO" };
 	icu.getLocaleName = function() { return "中文（简体，中国澳门特别行政区）" };
 
-	module.exports = icu;
 })();

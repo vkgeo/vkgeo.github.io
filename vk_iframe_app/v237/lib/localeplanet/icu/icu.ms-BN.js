@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ms-BN" };
 	icu.getLocaleName = function() { return "Bahasa Melayu (Brunei)" };
 
-	module.exports = icu;
 })();

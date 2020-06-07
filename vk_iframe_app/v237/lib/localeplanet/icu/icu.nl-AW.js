@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nl-AW" };
 	icu.getLocaleName = function() { return "Nederlands (Aruba)" };
 
-	module.exports = icu;
 })();

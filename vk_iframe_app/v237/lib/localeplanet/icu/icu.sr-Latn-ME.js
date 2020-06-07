@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sr-Latn-ME" };
 	icu.getLocaleName = function() { return "srpski (latinica, Crna Gora)" };
 
-	module.exports = icu;
 })();

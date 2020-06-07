@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "teo-UG" };
 	icu.getLocaleName = function() { return "Kiteso (Uganda)" };
 
-	module.exports = icu;
 })();

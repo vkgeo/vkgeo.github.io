@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ne-NP" };
 	icu.getLocaleName = function() { return "नेपाली (नेपाल)" };
 
-	module.exports = icu;
 })();

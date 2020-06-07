@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-KI" };
 	icu.getLocaleName = function() { return "English (Kiribati)" };
 
-	module.exports = icu;
 })();

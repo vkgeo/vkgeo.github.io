@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "uz-Arab" };
 	icu.getLocaleName = function() { return "اوزبیک (عربی)" };
 
-	module.exports = icu;
 })();

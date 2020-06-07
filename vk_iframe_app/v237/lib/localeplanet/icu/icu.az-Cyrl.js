@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "az-Cyrl" };
 	icu.getLocaleName = function() { return "азәрбајҹан (Кирил)" };
 
-	module.exports = icu;
 })();

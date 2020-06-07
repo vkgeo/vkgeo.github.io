@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kkj" };
 	icu.getLocaleName = function() { return "kakɔ" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ha" };
 	icu.getLocaleName = function() { return "Hausa" };
 
-	module.exports = icu;
 })();

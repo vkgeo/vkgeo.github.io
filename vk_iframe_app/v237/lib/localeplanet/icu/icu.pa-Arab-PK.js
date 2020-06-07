@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pa-Arab-PK" };
 	icu.getLocaleName = function() { return "پنجابی (عربی, پاکستان)" };
 
-	module.exports = icu;
 })();

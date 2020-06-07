@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "vai-Latn-LR" };
 	icu.getLocaleName = function() { return "Vai (Latn, Laibhiya)" };
 
-	module.exports = icu;
 })();

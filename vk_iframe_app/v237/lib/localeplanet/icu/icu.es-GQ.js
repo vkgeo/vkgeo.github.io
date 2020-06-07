@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-GQ" };
 	icu.getLocaleName = function() { return "español (Guinea Ecuatorial)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "seh-MZ" };
 	icu.getLocaleName = function() { return "sena (Moçambique)" };
 
-	module.exports = icu;
 })();

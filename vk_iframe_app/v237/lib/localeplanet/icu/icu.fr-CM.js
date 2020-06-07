@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-CM" };
 	icu.getLocaleName = function() { return "français (Cameroun)" };
 
-	module.exports = icu;
 })();

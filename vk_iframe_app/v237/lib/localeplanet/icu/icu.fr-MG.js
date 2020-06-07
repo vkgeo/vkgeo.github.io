@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-MG" };
 	icu.getLocaleName = function() { return "français (Madagascar)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "de-LI" };
 	icu.getLocaleName = function() { return "Deutsch (Liechtenstein)" };
 
-	module.exports = icu;
 })();

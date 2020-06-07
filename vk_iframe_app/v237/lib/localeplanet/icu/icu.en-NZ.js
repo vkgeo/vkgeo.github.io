@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-NZ" };
 	icu.getLocaleName = function() { return "English (New Zealand)" };
 
-	module.exports = icu;
 })();

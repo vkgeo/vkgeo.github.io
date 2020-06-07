@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-PA" };
 	icu.getLocaleName = function() { return "español (Panamá)" };
 
-	module.exports = icu;
 })();

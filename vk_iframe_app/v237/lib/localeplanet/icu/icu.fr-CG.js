@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-CG" };
 	icu.getLocaleName = function() { return "français (Congo-Brazzaville)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mfe-MU" };
 	icu.getLocaleName = function() { return "kreol morisien (Moris)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-KM" };
 	icu.getLocaleName = function() { return "français (Comores)" };
 
-	module.exports = icu;
 })();

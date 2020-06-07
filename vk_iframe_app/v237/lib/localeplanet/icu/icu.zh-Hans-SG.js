@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "zh-Hans-SG" };
 	icu.getLocaleName = function() { return "中文（简体，新加坡）" };
 
-	module.exports = icu;
 })();

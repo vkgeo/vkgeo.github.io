@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-FJ" };
 	icu.getLocaleName = function() { return "English (Fiji)" };
 
-	module.exports = icu;
 })();

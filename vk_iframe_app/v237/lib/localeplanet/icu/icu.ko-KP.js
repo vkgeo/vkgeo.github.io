@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ko-KP" };
 	icu.getLocaleName = function() { return "한국어(조선민주주의인민공화국)" };
 
-	module.exports = icu;
 })();

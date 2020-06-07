@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "uz-Arab-AF" };
 	icu.getLocaleName = function() { return "اوزبیک (عربی, افغانستان)" };
 
-	module.exports = icu;
 })();

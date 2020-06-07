@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ta-MY" };
 	icu.getLocaleName = function() { return "தமிழ் (மலேசியா)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "teo-KE" };
 	icu.getLocaleName = function() { return "Kiteso (Kenia)" };
 
-	module.exports = icu;
 })();

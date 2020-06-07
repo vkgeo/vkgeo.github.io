@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pt-MZ" };
 	icu.getLocaleName = function() { return "português (Moçambique)" };
 
-	module.exports = icu;
 })();

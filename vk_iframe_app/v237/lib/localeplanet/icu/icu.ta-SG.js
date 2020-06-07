@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ta-SG" };
 	icu.getLocaleName = function() { return "தமிழ் (சிங்கப்பூர்)" };
 
-	module.exports = icu;
 })();

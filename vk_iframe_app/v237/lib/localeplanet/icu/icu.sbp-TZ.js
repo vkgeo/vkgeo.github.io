@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sbp-TZ" };
 	icu.getLocaleName = function() { return "Ishisangu (Tansaniya)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-FM" };
 	icu.getLocaleName = function() { return "English (Micronesia)" };
 
-	module.exports = icu;
 })();

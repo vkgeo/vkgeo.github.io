@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-NA" };
 	icu.getLocaleName = function() { return "English (Namibia)" };
 
-	module.exports = icu;
 })();

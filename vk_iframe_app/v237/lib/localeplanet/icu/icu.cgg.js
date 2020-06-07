@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "cgg" };
 	icu.getLocaleName = function() { return "Rukiga" };
 
-	module.exports = icu;
 })();

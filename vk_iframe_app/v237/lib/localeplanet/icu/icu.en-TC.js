@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-TC" };
 	icu.getLocaleName = function() { return "English (Turks & Caicos Islands)" };
 
-	module.exports = icu;
 })();

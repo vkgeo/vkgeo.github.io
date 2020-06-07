@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "km-KH" };
 	icu.getLocaleName = function() { return "ខ្មែរ (កម្ពុជា)" };
 
-	module.exports = icu;
 })();

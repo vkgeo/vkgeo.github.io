@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kw-GB" };
 	icu.getLocaleName = function() { return "kernewek (Rywvaneth Unys)" };
 
-	module.exports = icu;
 })();

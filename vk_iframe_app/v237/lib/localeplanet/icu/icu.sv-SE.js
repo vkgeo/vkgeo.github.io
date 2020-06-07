@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sv-SE" };
 	icu.getLocaleName = function() { return "svenska (Sverige)" };
 
-	module.exports = icu;
 })();

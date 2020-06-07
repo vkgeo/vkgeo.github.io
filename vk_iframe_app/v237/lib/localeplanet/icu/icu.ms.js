@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ms" };
 	icu.getLocaleName = function() { return "Melayu" };
 
-	module.exports = icu;
 })();

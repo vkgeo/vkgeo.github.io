@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "twq" };
 	icu.getLocaleName = function() { return "Tasawaq senni" };
 
-	module.exports = icu;
 })();

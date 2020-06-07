@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bm" };
 	icu.getLocaleName = function() { return "bamanakan" };
 
-	module.exports = icu;
 })();

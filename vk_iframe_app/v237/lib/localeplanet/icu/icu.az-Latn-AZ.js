@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "az-Latn-AZ" };
 	icu.getLocaleName = function() { return "azərbaycan (latın, Azərbaycan)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "khq" };
 	icu.getLocaleName = function() { return "Koyra ciini" };
 
-	module.exports = icu;
 })();

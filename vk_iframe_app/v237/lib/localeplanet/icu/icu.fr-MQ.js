@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-MQ" };
 	icu.getLocaleName = function() { return "français (Martinique)" };
 
-	module.exports = icu;
 })();

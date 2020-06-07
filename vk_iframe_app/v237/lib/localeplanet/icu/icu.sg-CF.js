@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sg-CF" };
 	icu.getLocaleName = function() { return "Sängö (Ködörösêse tî Bêafrîka)" };
 
-	module.exports = icu;
 })();

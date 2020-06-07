@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ka-GE" };
 	icu.getLocaleName = function() { return "ქართული (საქართველო)" };
 
-	module.exports = icu;
 })();

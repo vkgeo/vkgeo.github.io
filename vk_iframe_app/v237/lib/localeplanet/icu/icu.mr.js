@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mr" };
 	icu.getLocaleName = function() { return "मराठी" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kln" };
 	icu.getLocaleName = function() { return "Kalenjin" };
 
-	module.exports = icu;
 })();

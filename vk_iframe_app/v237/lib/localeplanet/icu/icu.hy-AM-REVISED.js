@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Հայերէն (Հայաստանի Հանրապետութիւն, REVISED)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "vi" };
 	icu.getLocaleName = function() { return "Tiếng Việt" };
 
-	module.exports = icu;
 })();

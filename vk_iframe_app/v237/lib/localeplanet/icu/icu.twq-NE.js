@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "twq-NE" };
 	icu.getLocaleName = function() { return "Tasawaq senni (Nižer)" };
 
-	module.exports = icu;
 })();

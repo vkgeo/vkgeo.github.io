@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "es-PY" };
 	icu.getLocaleName = function() { return "español (Paraguay)" };
 
-	module.exports = icu;
 })();

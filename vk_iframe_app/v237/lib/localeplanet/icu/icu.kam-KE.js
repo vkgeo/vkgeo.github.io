@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kam-KE" };
 	icu.getLocaleName = function() { return "Kikamba (Kenya)" };
 
-	module.exports = icu;
 })();

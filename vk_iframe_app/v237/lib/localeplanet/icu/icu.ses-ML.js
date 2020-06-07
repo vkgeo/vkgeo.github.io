@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ses-ML" };
 	icu.getLocaleName = function() { return "Koyraboro senni (Maali)" };
 
-	module.exports = icu;
 })();

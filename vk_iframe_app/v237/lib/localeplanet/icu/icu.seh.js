@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "seh" };
 	icu.getLocaleName = function() { return "sena" };
 
-	module.exports = icu;
 })();

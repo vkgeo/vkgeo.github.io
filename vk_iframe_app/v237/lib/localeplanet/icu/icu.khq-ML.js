@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "khq-ML" };
 	icu.getLocaleName = function() { return "Koyra ciini (Maali)" };
 
-	module.exports = icu;
 })();

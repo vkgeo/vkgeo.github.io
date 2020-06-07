@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-GU" };
 	icu.getLocaleName = function() { return "English (Guam)" };
 
-	module.exports = icu;
 })();

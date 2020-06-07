@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-GG" };
 	icu.getLocaleName = function() { return "English (Guernsey)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-UM" };
 	icu.getLocaleName = function() { return "English (U.S. Outlying Islands)" };
 
-	module.exports = icu;
 })();

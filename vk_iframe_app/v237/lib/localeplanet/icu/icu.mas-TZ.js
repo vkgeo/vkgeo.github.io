@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mas-TZ" };
 	icu.getLocaleName = function() { return "Maa (Tansania)" };
 
-	module.exports = icu;
 })();

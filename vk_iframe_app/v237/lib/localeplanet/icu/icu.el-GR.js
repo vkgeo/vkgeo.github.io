@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "el-GR" };
 	icu.getLocaleName = function() { return "Ελληνικά (Ελλάδα)" };
 
-	module.exports = icu;
 })();

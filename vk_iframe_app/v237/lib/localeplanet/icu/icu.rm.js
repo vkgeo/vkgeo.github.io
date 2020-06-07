@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rm" };
 	icu.getLocaleName = function() { return "rumantsch" };
 
-	module.exports = icu;
 })();

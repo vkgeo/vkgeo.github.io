@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "tzm" };
 	icu.getLocaleName = function() { return "Tamaziɣt n laṭlaṣ" };
 
-	module.exports = icu;
 })();

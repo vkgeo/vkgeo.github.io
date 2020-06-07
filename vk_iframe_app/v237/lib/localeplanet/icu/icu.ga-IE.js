@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ga-IE" };
 	icu.getLocaleName = function() { return "Gaeilge (Éire)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ro-MD" };
 	icu.getLocaleName = function() { return "română (Republica Moldova)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ak" };
 	icu.getLocaleName = function() { return "Akan" };
 
-	module.exports = icu;
 })();

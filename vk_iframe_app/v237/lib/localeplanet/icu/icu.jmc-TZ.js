@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "jmc-TZ" };
 	icu.getLocaleName = function() { return "Kimachame (Tanzania)" };
 
-	module.exports = icu;
 })();

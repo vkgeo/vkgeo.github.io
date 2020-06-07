@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sbp" };
 	icu.getLocaleName = function() { return "Ishisangu" };
 
-	module.exports = icu;
 })();

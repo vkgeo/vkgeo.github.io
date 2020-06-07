@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "uz-Latn-UZ" };
 	icu.getLocaleName = function() { return "o‘zbek (lotin, Oʻzbekiston)" };
 
-	module.exports = icu;
 })();

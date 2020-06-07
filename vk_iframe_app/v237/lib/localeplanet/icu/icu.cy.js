@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "cy" };
 	icu.getLocaleName = function() { return "Cymraeg" };
 
-	module.exports = icu;
 })();

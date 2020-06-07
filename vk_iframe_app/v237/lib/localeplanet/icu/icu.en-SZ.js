@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-SZ" };
 	icu.getLocaleName = function() { return "English (Swaziland)" };
 
-	module.exports = icu;
 })();

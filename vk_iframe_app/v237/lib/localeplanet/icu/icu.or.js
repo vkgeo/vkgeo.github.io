@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "or" };
 	icu.getLocaleName = function() { return "ଓଡ଼ିଆ" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Српски (Ћирилица, Србија и Црна Гора)" };
 
-	module.exports = icu;
 })();

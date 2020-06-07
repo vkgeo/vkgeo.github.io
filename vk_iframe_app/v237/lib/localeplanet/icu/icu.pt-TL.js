@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pt-TL" };
 	icu.getLocaleName = function() { return "português (Timor-Leste)" };
 
-	module.exports = icu;
 })();

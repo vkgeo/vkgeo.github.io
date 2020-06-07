@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "pa" };
 	icu.getLocaleName = function() { return "ਪੰਜਾਬੀ" };
 
-	module.exports = icu;
 })();

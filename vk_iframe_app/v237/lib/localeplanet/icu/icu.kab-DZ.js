@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kab-DZ" };
 	icu.getLocaleName = function() { return "Taqbaylit (Lezzayer)" };
 
-	module.exports = icu;
 })();

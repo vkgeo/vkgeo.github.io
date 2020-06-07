@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "dje-NE" };
 	icu.getLocaleName = function() { return "Zarmaciine (Nižer)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "agq-CM" };
 	icu.getLocaleName = function() { return "Aghem (Kàmàlûŋ)" };
 
-	module.exports = icu;
 })();

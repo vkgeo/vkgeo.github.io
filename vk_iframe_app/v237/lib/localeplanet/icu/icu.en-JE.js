@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-JE" };
 	icu.getLocaleName = function() { return "English (Jersey)" };
 
-	module.exports = icu;
 })();

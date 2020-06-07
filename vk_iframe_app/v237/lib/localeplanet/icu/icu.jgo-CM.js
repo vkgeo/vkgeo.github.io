@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "jgo-CM" };
 	icu.getLocaleName = function() { return "Ndaꞌa (Kamɛlûn)" };
 
-	module.exports = icu;
 })();

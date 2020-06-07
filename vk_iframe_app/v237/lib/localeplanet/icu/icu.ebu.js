@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ebu" };
 	icu.getLocaleName = function() { return "Kĩembu" };
 
-	module.exports = icu;
 })();

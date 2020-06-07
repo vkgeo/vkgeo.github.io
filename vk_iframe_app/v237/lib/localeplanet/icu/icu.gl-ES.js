@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "gl-ES" };
 	icu.getLocaleName = function() { return "galego (España)" };
 
-	module.exports = icu;
 })();

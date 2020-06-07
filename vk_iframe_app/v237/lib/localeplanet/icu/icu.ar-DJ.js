@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ar-DJ" };
 	icu.getLocaleName = function() { return "العربية (جيبوتي)" };
 
-	module.exports = icu;
 })();

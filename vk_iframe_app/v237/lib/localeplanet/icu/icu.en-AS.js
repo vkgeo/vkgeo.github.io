@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-AS" };
 	icu.getLocaleName = function() { return "English (American Samoa)" };
 
-	module.exports = icu;
 })();

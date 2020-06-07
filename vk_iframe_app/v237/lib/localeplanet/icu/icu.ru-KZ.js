@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ru-KZ" };
 	icu.getLocaleName = function() { return "русский (Казахстан)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "xog" };
 	icu.getLocaleName = function() { return "Olusoga" };
 
-	module.exports = icu;
 })();

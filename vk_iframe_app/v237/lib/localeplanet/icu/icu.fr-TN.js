@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-TN" };
 	icu.getLocaleName = function() { return "français (Tunisie)" };
 
-	module.exports = icu;
 })();

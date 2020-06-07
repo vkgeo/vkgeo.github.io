@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fo-FO" };
 	icu.getLocaleName = function() { return "føroyskt (Føroyar)" };
 
-	module.exports = icu;
 })();

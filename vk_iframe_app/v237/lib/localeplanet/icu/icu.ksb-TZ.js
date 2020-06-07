@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ksb-TZ" };
 	icu.getLocaleName = function() { return "Kishambaa (Tanzania)" };
 
-	module.exports = icu;
 })();

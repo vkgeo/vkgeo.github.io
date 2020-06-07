@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "zu" };
 	icu.getLocaleName = function() { return "isiZulu" };
 
-	module.exports = icu;
 })();

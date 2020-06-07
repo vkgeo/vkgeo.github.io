@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ast" };
 	icu.getLocaleName = function() { return "asturianu" };
 
-	module.exports = icu;
 })();

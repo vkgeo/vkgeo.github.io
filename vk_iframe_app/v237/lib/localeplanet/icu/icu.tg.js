@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "tg" };
 	icu.getLocaleName = function() { return "тоҷикӣ" };
 
-	module.exports = icu;
 })();

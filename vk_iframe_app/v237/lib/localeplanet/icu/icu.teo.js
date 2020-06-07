@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "teo" };
 	icu.getLocaleName = function() { return "Kiteso" };
 
-	module.exports = icu;
 })();

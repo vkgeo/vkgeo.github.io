@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "se-NO" };
 	icu.getLocaleName = function() { return "davvisámegiella (Norga)" };
 
-	module.exports = icu;
 })();

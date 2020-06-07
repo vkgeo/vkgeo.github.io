@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sg" };
 	icu.getLocaleName = function() { return "Sängö" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-SC" };
 	icu.getLocaleName = function() { return "English (Seychelles)" };
 
-	module.exports = icu;
 })();

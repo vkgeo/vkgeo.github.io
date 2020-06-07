@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sn" };
 	icu.getLocaleName = function() { return "chiShona" };
 
-	module.exports = icu;
 })();

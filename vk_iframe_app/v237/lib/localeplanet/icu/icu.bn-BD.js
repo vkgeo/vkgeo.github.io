@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bn-BD" };
 	icu.getLocaleName = function() { return "বাংলা (বাংলাদেশ)" };
 
-	module.exports = icu;
 })();

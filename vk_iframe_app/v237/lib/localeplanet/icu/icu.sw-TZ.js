@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sw-TZ" };
 	icu.getLocaleName = function() { return "Kiswahili (Tanzania)" };
 
-	module.exports = icu;
 })();

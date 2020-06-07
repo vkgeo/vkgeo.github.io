@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "hi-IN" };
 	icu.getLocaleName = function() { return "हिन्दी (भारत)" };
 
-	module.exports = icu;
 })();

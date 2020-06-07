@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "so-ET" };
 	icu.getLocaleName = function() { return "Soomaali (Itoobiya)" };
 
-	module.exports = icu;
 })();

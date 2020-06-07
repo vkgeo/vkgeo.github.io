@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-KE" };
 	icu.getLocaleName = function() { return "English (Kenya)" };
 
-	module.exports = icu;
 })();

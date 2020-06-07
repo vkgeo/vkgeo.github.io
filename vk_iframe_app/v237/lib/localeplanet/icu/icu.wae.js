@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "wae" };
 	icu.getLocaleName = function() { return "Walser" };
 
-	module.exports = icu;
 })();

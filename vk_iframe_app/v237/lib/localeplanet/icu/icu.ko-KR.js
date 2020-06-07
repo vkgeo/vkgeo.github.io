@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ko-KR" };
 	icu.getLocaleName = function() { return "한국어(대한민국)" };
 
-	module.exports = icu;
 })();

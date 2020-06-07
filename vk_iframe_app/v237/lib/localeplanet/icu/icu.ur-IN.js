@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ur-IN" };
 	icu.getLocaleName = function() { return "اردو (بھارت)" };
 
-	module.exports = icu;
 })();

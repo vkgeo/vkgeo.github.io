@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "xog-UG" };
 	icu.getLocaleName = function() { return "Olusoga (Yuganda)" };
 
-	module.exports = icu;
 })();

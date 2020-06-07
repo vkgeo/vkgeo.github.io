@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kn-IN" };
 	icu.getLocaleName = function() { return "ಕನ್ನಡ (ಭಾರತ)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "my-MM" };
 	icu.getLocaleName = function() { return "မြန်မာ (မြန်မာ)" };
 
-	module.exports = icu;
 })();

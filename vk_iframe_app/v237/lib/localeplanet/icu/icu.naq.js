@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "naq" };
 	icu.getLocaleName = function() { return "Khoekhoegowab" };
 
-	module.exports = icu;
 })();

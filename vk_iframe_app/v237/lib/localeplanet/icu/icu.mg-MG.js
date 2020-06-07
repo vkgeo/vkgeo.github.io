@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mg-MG" };
 	icu.getLocaleName = function() { return "Malagasy (Madagasikara)" };
 
-	module.exports = icu;
 })();

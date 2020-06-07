@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Tsonga (South Africa)" };
 
-	module.exports = icu;
 })();

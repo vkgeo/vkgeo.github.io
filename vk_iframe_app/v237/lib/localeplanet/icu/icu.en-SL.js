@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-SL" };
 	icu.getLocaleName = function() { return "English (Sierra Leone)" };
 
-	module.exports = icu;
 })();

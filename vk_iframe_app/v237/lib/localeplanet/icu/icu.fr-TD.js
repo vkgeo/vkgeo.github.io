@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-TD" };
 	icu.getLocaleName = function() { return "français (Tchad)" };
 
-	module.exports = icu;
 })();

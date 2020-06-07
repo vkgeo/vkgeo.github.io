@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sah" };
 	icu.getLocaleName = function() { return "саха тыла" };
 
-	module.exports = icu;
 })();

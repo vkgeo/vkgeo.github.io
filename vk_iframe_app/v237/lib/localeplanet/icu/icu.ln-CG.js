@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ln-CG" };
 	icu.getLocaleName = function() { return "lingála (Kongo)" };
 
-	module.exports = icu;
 })();

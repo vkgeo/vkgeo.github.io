@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "en-TT" };
 	icu.getLocaleName = function() { return "English (Trinidad & Tobago)" };
 
-	module.exports = icu;
 })();

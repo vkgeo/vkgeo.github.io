@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "English (Shavian)" };
 
-	module.exports = icu;
 })();

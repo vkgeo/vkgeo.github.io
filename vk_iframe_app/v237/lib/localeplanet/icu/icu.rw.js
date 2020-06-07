@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rw" };
 	icu.getLocaleName = function() { return "Kinyarwanda" };
 
-	module.exports = icu;
 })();

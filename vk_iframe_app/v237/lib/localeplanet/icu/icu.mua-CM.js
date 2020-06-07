@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "mua-CM" };
 	icu.getLocaleName = function() { return "MUNDAŊ (kameruŋ)" };
 
-	module.exports = icu;
 })();

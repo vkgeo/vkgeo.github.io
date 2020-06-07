@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "se-FI" };
 	icu.getLocaleName = function() { return "davvisámegiella (Suopma)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bs-BA" };
 	icu.getLocaleName = function() { return "bosanski (Bosna i Hercegovina)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "dav" };
 	icu.getLocaleName = function() { return "Kitaita" };
 
-	module.exports = icu;
 })();

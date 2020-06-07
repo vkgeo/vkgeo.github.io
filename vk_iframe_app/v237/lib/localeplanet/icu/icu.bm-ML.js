@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bm-ML" };
 	icu.getLocaleName = function() { return "bamanakan (Mali)" };
 
-	module.exports = icu;
 })();

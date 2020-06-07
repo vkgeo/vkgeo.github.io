@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ar-QA" };
 	icu.getLocaleName = function() { return "العربية (قطر)" };
 
-	module.exports = icu;
 })();

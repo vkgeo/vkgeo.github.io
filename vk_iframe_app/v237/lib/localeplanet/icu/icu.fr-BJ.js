@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-BJ" };
 	icu.getLocaleName = function() { return "français (Bénin)" };
 
-	module.exports = icu;
 })();

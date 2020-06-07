@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "kk" };
 	icu.getLocaleName = function() { return "қазақ тілі" };
 
-	module.exports = icu;
 })();

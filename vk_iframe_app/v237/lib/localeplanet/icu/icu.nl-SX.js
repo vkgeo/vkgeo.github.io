@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "nl-SX" };
 	icu.getLocaleName = function() { return "Nederlands (Sint-Maarten)" };
 
-	module.exports = icu;
 })();

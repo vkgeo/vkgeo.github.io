@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ses" };
 	icu.getLocaleName = function() { return "Koyraboro senni" };
 
-	module.exports = icu;
 })();

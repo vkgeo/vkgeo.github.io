@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fur" };
 	icu.getLocaleName = function() { return "furlan" };
 
-	module.exports = icu;
 })();

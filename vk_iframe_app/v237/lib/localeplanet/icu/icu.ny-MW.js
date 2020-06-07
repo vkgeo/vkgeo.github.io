@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "Nyanja (Malawi)" };
 
-	module.exports = icu;
 })();

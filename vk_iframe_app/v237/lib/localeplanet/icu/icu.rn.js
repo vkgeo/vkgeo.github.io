@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "rn" };
 	icu.getLocaleName = function() { return "Ikirundi" };
 
-	module.exports = icu;
 })();

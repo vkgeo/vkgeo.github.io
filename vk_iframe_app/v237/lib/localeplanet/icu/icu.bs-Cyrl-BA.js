@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "bs-Cyrl-BA" };
 	icu.getLocaleName = function() { return "босански (ћирилица, Босна и Херцеговина)" };
 
-	module.exports = icu;
 })();

@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "lv-LV" };
 	icu.getLocaleName = function() { return "latviešu (Latvija)" };
 
-	module.exports = icu;
 })();

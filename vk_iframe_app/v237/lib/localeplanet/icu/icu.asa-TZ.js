@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "asa-TZ" };
 	icu.getLocaleName = function() { return "Kipare (Tadhania)" };
 
-	module.exports = icu;
 })();

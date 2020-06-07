@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "null" };
 	icu.getLocaleName = function() { return "中文（中華人民共和國澳門特別行政區）" };
 
-	module.exports = icu;
 })();

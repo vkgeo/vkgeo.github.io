@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "fr-RW" };
 	icu.getLocaleName = function() { return "français (Rwanda)" };
 
-	module.exports = icu;
 })();

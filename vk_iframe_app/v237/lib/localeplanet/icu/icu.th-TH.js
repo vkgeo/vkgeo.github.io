@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "th-TH" };
 	icu.getLocaleName = function() { return "ไทย (ไทย)" };
 
-	module.exports = icu;
 })();

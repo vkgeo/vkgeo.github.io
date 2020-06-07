@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "gsw" };
 	icu.getLocaleName = function() { return "Schwiizertüütsch" };
 
-	module.exports = icu;
 })();

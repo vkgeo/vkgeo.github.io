@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "sr-Cyrl" };
 	icu.getLocaleName = function() { return "српски (ћирилица)" };
 
-	module.exports = icu;
 })();

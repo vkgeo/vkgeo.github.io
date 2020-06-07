@@ -22,5 +22,4 @@
 	icu.getLocale = function() { return "ebu-KE" };
 	icu.getLocaleName = function() { return "Kĩembu (Kenya)" };
 
-	module.exports = icu;
 })();
